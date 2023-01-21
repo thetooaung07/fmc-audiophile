@@ -1,3 +1,3 @@
 # Notice
 
-This repository contains multiple branches, each represents a challenge from Frontend Master
+This repository contains multiple branches, each represents a challenge from Frontend Mentor.
