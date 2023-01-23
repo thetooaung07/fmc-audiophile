@@ -1,10 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../App.css";
 import HeroImage from "../images/home/desktop/image-hero.jpg";
-import Speakers from "../images/shared/desktop/image-earphones.png";
+import Earphones from "../images/shared/desktop/image-earphones.png";
 import Headphones from "../images/shared/desktop/image-headphones.png";
-import Earphones from "../images/shared/desktop/image-speakers.png";
+import Speakers from "../images/shared/desktop/image-speakers.png";
 
 export const HomePage = () => {
   // const { category } = useParams();
@@ -20,7 +20,7 @@ export const HomePage = () => {
 
 export const MainSection = () => {
   return (
-    <div className="bg-black text-white">
+    <section className="bg-black text-white">
       <div className="container-center relative">
         <div className="absolute top-32 w-96">
           <p className="text-lg opacity-70" style={{ letterSpacing: 10 }}>
@@ -47,32 +47,57 @@ export const MainSection = () => {
           <img src={HeroImage} alt="" className="home-image" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export const HomePageBody = () => {
   return (
-    <div className="bg-white mt-36 h-screen">
+    <section className="bg-white mt-32 h-screen">
       <div className="container-center grid md:grid-cols-3 sm:grid-cols-1 items-center gap-4">
-        <HomePageBodyCard></HomePageBodyCard>
-        <HomePageBodyCard></HomePageBodyCard>
-        <HomePageBodyCard></HomePageBodyCard>
+        <HomePageBodyCard
+          title="Headphones"
+          imageUrl={Headphones}
+          goToUrl="/headphones"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          title="Speakers"
+          imageUrl={Speakers}
+          goToUrl="/speakers"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          title="Earphones"
+          imageUrl={Earphones}
+          goToUrl="/earphones"
+        ></HomePageBodyCard>
       </div>
-    </div>
+    </section>
   );
 };
 
-export const HomePageBodyCard = () => {
+type HomePageBodyCard = {
+  imageUrl: string;
+  title: string;
+  goToUrl: string;
+};
+
+export const HomePageBodyCard = ({
+  imageUrl,
+  title,
+  goToUrl,
+}: HomePageBodyCard) => {
   return (
-    <div className="mx-auto mt-14 flex flex-col justify-between items-center w-full col-span-1 bg-[#F1F1F1] rounded-xl">
-      <img src={Headphones} alt="" className="-mt-14 w-36 h-32" />
+    <div className="mx-auto mt-12 flex flex-col justify-between items-center w-full col-span-1 bg-[#F1F1F1] rounded-xl">
+      <img src={imageUrl} alt="" className="-mt-12 w-36 h-32" />
       <div>
-        <p className="uppercase font-semibold text-lg">Headphones</p>
-        <div className="flex pt-7 pb-5 opacity-60 justify-center items-center">
-          <p className="pr-1 uppercase">Shop </p>
+        <p className="uppercase font-semibold text-lg">{title}</p>
+        <Link
+          to={goToUrl}
+          className="flex pt-7 pb-5 opacity-60 justify-center items-center"
+        >
+          <p className="pr-2 uppercase">Shop </p>
           <p className="text-2xl">&gt;</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
