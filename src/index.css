@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html {
+  zoom: 0.9; /* Old IE only */
   font-family: "Manrope", sans-serif;
   overflow-y: scroll;
   overflow-x: hidden;
