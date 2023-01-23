@@ -5,6 +5,9 @@ import HeroImage from "../images/home/desktop/image-hero.jpg";
 import Earphones from "../images/shared/desktop/image-earphones.png";
 import Headphones from "../images/shared/desktop/image-headphones.png";
 import Speakers from "../images/shared/desktop/image-speakers.png";
+import FacebookIcon from "../images/shared/facebook.svg";
+import InstagramIcon from "../images/shared/instagram.svg";
+import TwitterIcon from "../images/shared/twitter.svg";
 
 import YX1Earphones from "../images/home/mobile/image-earphones-yx1.jpg";
 
@@ -18,8 +21,7 @@ export const HomePage = () => {
 
       <MidSection></MidSection>
       <BottomSection></BottomSection>
-
-      {/* <div className="h-screen"></div> */}
+      <Footer></Footer>
     </>
   );
 };
@@ -216,5 +218,57 @@ export const BottomSection = () => {
         </p>
       </div>
     </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <section className="footer bg-black text-white mt-24">
+      <div className=" container-center relative pt-10">
+        <div className="absolute w-24 h-[6px] rounded-sm bg-buttonOrange top-0 -ml-1"></div>
+
+        <div className="flex justify-between items-center">
+          <h3 className="text-3xl">audiophile</h3>
+
+          <div className="flex space-x-12 justify-end tracking-wider">
+            <Link className="uppercase" to={"/"}>
+              Home
+            </Link>
+            <Link className="uppercase" to={"/headphones"}>
+              headphones
+            </Link>
+            <Link className="uppercase" to={"/speakers"}>
+              speakers
+            </Link>
+            <Link className="uppercase" to={"/earphones"}>
+              earphones
+            </Link>
+          </div>
+        </div>
+        <div className="flex justify-between items-end pt-10 space-x-20">
+          <p className="mt-4 opacity-50 w-1/2">
+            Audiophile is an all in one stop to fulfill your audio needs. We're
+            a small team of music lovers and sound specialists who are devoted
+            to helping you get the most out of personal audio. Come and visit
+            our demo facility - we’re open 7 days a week.
+          </p>
+          <div className="flex space-x-12">
+            <Link className="uppercase w-10 h-10 text-white" to={"/"}>
+              <img src={FacebookIcon} className="text-white " alt="" />
+            </Link>
+            <Link className="uppercase" to={"/headphones"}>
+              <img src={TwitterIcon} alt="" />
+            </Link>
+            <Link className="uppercase" to={"/speakers"}>
+              <img src={InstagramIcon} alt="" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-8 pb-8 opacity-50">
+          Copyright 2021. All Rights Reserved
+        </div>
+      </div>
+    </section>
   );
 };
