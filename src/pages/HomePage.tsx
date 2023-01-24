@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "../App.css";
-import HeroImage from "../images/home/desktop/image-hero.jpg";
+import HeroImageDesktop from "../images/home/desktop/image-hero.jpg";
+import HeroImageTablet from "../images/home/tablet/image-hero.jpg";
 import Earphones from "../images/shared/desktop/image-earphones.png";
 import Headphones from "../images/shared/desktop/image-headphones.png";
 import Speakers from "../images/shared/desktop/image-speakers.png";
@@ -30,7 +31,7 @@ export const MainSection = () => {
   return (
     <section className="bg-black text-white">
       <div className="container-center relative">
-        <div className="absolute top-32 w-96">
+        <div className="absolute lg:top-32 lg:w-96 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <p className="text-lg opacity-70" style={{ letterSpacing: 10 }}>
             New Product
           </p>
@@ -51,9 +52,18 @@ export const MainSection = () => {
             </button>
           </div>
         </div>
-        <div>
-          <img src={HeroImage} alt="" className="home-image" />
-        </div>
+        <picture className="w-full ">
+          <img
+            src={HeroImageDesktop}
+            alt=""
+            className="home-image lg:block hidden"
+          />
+          <img
+            src={HeroImageTablet}
+            alt=""
+            className="home-image lg:hidden block"
+          />
+        </picture>
       </div>
     </section>
   );
@@ -61,7 +71,7 @@ export const MainSection = () => {
 
 export const HomePageBody = () => {
   return (
-    <section className="bg-white mt-32 ">
+    <section className="bg-white mt-24 ">
       <div className="container-center grid md:grid-cols-3 sm:grid-cols-1 items-center gap-4">
         <HomePageBodyCard
           title="Headphones"
@@ -121,7 +131,7 @@ export const MidSection = () => {
 
 export const MidSection1 = () => {
   return (
-    <div className="container-center mt-32 ">
+    <div className="container-center mt-24 ">
       <div className="bg-pattern pt-20 flex flex-row justify-center ">
         <img
           src="../../src/images/home/desktop/image-speaker-zx9.png"
