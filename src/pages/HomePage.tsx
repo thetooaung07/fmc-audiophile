@@ -31,7 +31,7 @@ export const MainSection = () => {
   return (
     <section className="bg-black text-white">
       <div className="container-center relative">
-        <div className="absolute lg:top-32 lg:w-96 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-16 lg:w-96 lg:left-0 lg:translate-x-0 lg:translate-y-0 text-center lg:text-left">
           <p className="text-lg opacity-70" style={{ letterSpacing: 10 }}>
             New Product
           </p>
