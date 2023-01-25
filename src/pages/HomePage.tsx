@@ -126,14 +126,25 @@ export const MidSection = () => {
 export const MidSection1 = () => {
   return (
     <div className="container-center mt-24 ">
-      <div className="bg-pattern pt-20 flex flex-row justify-center ">
-        <img
-          src="../../src/images/home/desktop/image-speaker-zx9.png"
-          className="mt-4 w-auto h-full"
-          alt=""
-        />
+      <div className="bg-pattern lg:pt-32 xl:pt-12 pt-4 flex flex-col lg:basis-full lg:flex-row lg:justify-center">
+        <picture className="mx-auto lg:mx-0">
+          <source
+            srcSet={"../../src/images/home/mobile/image-speaker-zx9.png"}
+            media="(max-width: 480px)"
+          />
+          <source
+            srcSet={"../../src/images/home/tablet/image-speaker-zx9.png"}
+            media="(max-width: 976px)"
+          />
+          <img
+            src={"../../src/images/home/desktop/image-speaker-zx9.png"}
+            alt=""
+            className="h-60 w-auto lg:h-auto lg:w-auto"
+          />
+        </picture>
+
         {/* Duplicate with Main section text */}
-        <div className="w-96 ml-44">
+        <div className="lg:mx-20 lg:mt-20 text-center lg:text-left mx-24">
           <p className="text-6xl py-8 font-semibold text-white">ZX9 SPEAKER</p>
           <p className="opacity-60">
             Experience natural, lifelike audio and exceptional build quality
@@ -142,7 +153,7 @@ export const MidSection1 = () => {
 
           <div className="mt-6">
             <button
-              className="text-white px-8 py-2 text-lg uppercase bg-black "
+              className="text-white px-10 py-3 lg:px-8 lg:py-2 text-lg uppercase bg-black "
               onClick={(e) => {
                 e.preventDefault();
               }}
@@ -154,12 +165,22 @@ export const MidSection1 = () => {
       </div>
 
       {/* Second Section */}
-      <div className="relative mt-4">
-        <img
-          src={"../../src/images/home/desktop/image-speaker-zx7.jpg"}
-          alt=""
-          className="w-full rounded-lg"
-        />
+      <div className="relative mt-4 rounded-lg overflow-hidden">
+        <picture className="mx-auto lg:mx-0">
+          <source
+            srcSet={"../../src/images/home/mobile/image-speaker-zx7.jpg"}
+            media="(max-width: 480px)"
+          />
+          <source
+            srcSet={"../../src/images/home/tablet/image-speaker-zx7.jpg"}
+            media="(max-width: 976px)"
+          />
+          <img
+            src={"../../src/images/home/desktop/image-speaker-zx7.jpg"}
+            alt=""
+            className="h-full w-full lg:h-auto lg:w-auto"
+          />
+        </picture>
 
         <div className="absolute top-1/3 left-40">
           <h1 className="text-3xl font-bold">ZX7 Speaker</h1>
@@ -178,11 +199,22 @@ export const MidSection1 = () => {
 
       {/* Third Section */}
       <div className="flex flex-row mt-4 gap-4">
-        <img
-          src={YX1Earphones}
-          className="h-auto w-1/2 object-cover rounded-lg"
-          alt=""
-        />
+        <picture className="mx-auto lg:mx-0 flex-1 ">
+          <source
+            srcSet={"../../src/images/home/mobile/image-earphones-yx1.jpg"}
+            media="(max-width: 480px)"
+          />
+          <source
+            srcSet={"../../src/images/home/tablet/image-earphones-yx1.jpg"}
+            media="(max-width: 976px)"
+          />
+          <img
+            src={"../../src/images/home/desktop/image-earphones-yx1.jpg"}
+            alt=""
+            className="w-auto h-auto"
+          />
+        </picture>
+
         <div className="flex-1 bg-[#f1f1f1] rounded-lg pt-24 px-10">
           <h1 className="text-3xl font-bold">YX1 EARPHONES</h1>
           <div className="mt-6">
@@ -203,11 +235,21 @@ export const MidSection1 = () => {
 
 export const BottomSection = () => {
   return (
-    <div className="mt-24 container-center best-gear-bg flex flex-row-reverse items-center">
-      <img src="../../src/images/shared/desktop/image-best-gear.jpg" alt="" />
+    <div className="mt-24 container-center flex flex-col lg:flex-row-reverse basis-full">
+      <picture>
+        <source
+          media="(max-width: 480px)"
+          srcSet={"../../src/images/shared/mobile/image-best-gear.jpg"}
+        />
+        <source
+          media="(max-width: 976px)"
+          srcSet={"../../src/images/shared/tablet/image-best-gear.jpg"}
+        />
+        <img src="../../src/images/shared/desktop/image-best-gear.jpg" alt="" />
+      </picture>
 
-      <div className="md:mr-40">
-        <h2 className="uppercase leading-10 text-xl my-4 md:my-8 tracking-ap-2 font-bold md:text-4xl md:leading-11 md:max-w-md md:mx-auto lg:ml-0">
+      <div className="lg:mr-40 lg:w-1/2">
+        <h2 className="uppercase leading-10 text-xl my-4 md:my-8 tracking-ap-2 font-bold md:text-4xl md:mx-auto ml-0">
           Bringing you the <span className="text-[#d87d4a]">best</span> audio
           gear
         </h2>
@@ -228,44 +270,95 @@ export const BottomSection = () => {
 const Footer = () => {
   return (
     <section className="footer bg-black text-white mt-24">
-      <div className=" container-center relative pt-10">
+      <div className="container-center relative pt-10 ">
         <div className="absolute w-24 h-[6px] rounded-sm bg-buttonOrange top-0 -ml-1"></div>
 
-        <div className="flex justify-between items-center">
-          <h3 className="text-3xl">audiophile</h3>
+        {/* Desktop View */}
+        <div className="hidden md:block">
+          <div className="flex justify-between items-center">
+            <h3 className="text-3xl">audiophile</h3>
 
-          <div className="flex space-x-12 justify-end tracking-wider">
-            <Link className="uppercase" to={"/"}>
-              Home
-            </Link>
-            <Link className="uppercase" to={"/headphones"}>
-              headphones
-            </Link>
-            <Link className="uppercase" to={"/speakers"}>
-              speakers
-            </Link>
-            <Link className="uppercase" to={"/earphones"}>
-              earphones
-            </Link>
+            <div className="space-x-12 justify-end tracking-wider flex">
+              <Link className="uppercase" to={"/"}>
+                Home
+              </Link>
+              <Link className="uppercase" to={"/headphones"}>
+                headphones
+              </Link>
+              <Link className="uppercase" to={"/speakers"}>
+                speakers
+              </Link>
+              <Link className="uppercase" to={"/earphones"}>
+                earphones
+              </Link>
+            </div>
+          </div>
+          <div className="flex justify-between items-end pt-10 space-x-20">
+            <p className="mt-4 opacity-50 w-1/2">
+              Audiophile is an all in one stop to fulfill your audio needs.
+              We're a small team of music lovers and sound specialists who are
+              devoted to helping you get the most out of personal audio. Come
+              and visit our demo facility - we’re open 7 days a week.
+            </p>
+            <div className="space-x-12 flex">
+              <Link className="uppercase w-10 h-10 text-white" to={"/"}>
+                <img src={FacebookIcon} className="text-white " alt="" />
+              </Link>
+              <Link className="uppercase" to={"/headphones"}>
+                <img src={TwitterIcon} alt="" />
+              </Link>
+              <Link className="uppercase" to={"/speakers"}>
+                <img src={InstagramIcon} alt="" />
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex justify-between items-end pt-10 space-x-20">
-          <p className="mt-4 opacity-50 w-1/2">
-            Audiophile is an all in one stop to fulfill your audio needs. We're
-            a small team of music lovers and sound specialists who are devoted
-            to helping you get the most out of personal audio. Come and visit
-            our demo facility - we’re open 7 days a week.
-          </p>
-          <div className="flex space-x-12">
-            <Link className="uppercase w-10 h-10 text-white" to={"/"}>
-              <img src={FacebookIcon} className="text-white " alt="" />
-            </Link>
-            <Link className="uppercase" to={"/headphones"}>
-              <img src={TwitterIcon} alt="" />
-            </Link>
-            <Link className="uppercase" to={"/speakers"}>
-              <img src={InstagramIcon} alt="" />
-            </Link>
+
+        {/* Mobile View */}
+
+        <div className="flex md:hidden">
+          <div className=" flex-1">
+            <h3 className="text-3xl">audiophile</h3>
+            <p className="mt-4 opacity-50">
+              Audiophile is an all in one stop to fulfill your audio needs.
+              We're a small team of music lovers and sound specialists who are
+              devoted to helping you get the most out of personal audio. Come
+              and visit our demo facility - we’re open 7 days a week.
+            </p>
+          </div>
+          <div className="flex-1 flex justify-between flex-col">
+            <div className="h-1/2 mt-12 space-y-1">
+              <Link className="uppercase block text-right" to={"/"}>
+                Home
+              </Link>
+              <Link className="uppercase block text-right" to={"/headphones"}>
+                headphones
+              </Link>
+              <Link className="uppercase block text-right" to={"/speakers"}>
+                speakers
+              </Link>
+              <Link className="uppercase block text-right" to={"/earphones"}>
+                earphones
+              </Link>
+            </div>
+
+            <div className="flex justify-end items-center space-x-5">
+              <Link className="uppercase flex justify-end items-end " to={"/"}>
+                <img src={FacebookIcon} className="text-white " alt="" />
+              </Link>
+              <Link
+                className="uppercase flex justify-end items-end"
+                to={"/headphones"}
+              >
+                <img src={TwitterIcon} alt="" />
+              </Link>
+              <Link
+                className="uppercase flex justify-end items-end"
+                to={"/speakers"}
+              >
+                <img src={InstagramIcon} alt="" />
+              </Link>
+            </div>
           </div>
         </div>
 
