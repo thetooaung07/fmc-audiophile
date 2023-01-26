@@ -11,8 +11,6 @@ import FacebookIcon from "../images/shared/facebook.svg";
 import InstagramIcon from "../images/shared/instagram.svg";
 import TwitterIcon from "../images/shared/twitter.svg";
 
-import YX1Earphones from "../images/home/mobile/image-earphones-yx1.jpg";
-
 export const HomePage = () => {
   // const { category } = useParams();
   // console.log(category);
@@ -30,21 +28,21 @@ export const HomePage = () => {
 
 export const MainSection = () => {
   return (
-    <section className="bg-black text-white">
-      <div className="container-center relative">
-        <div className="absolute xl:ml-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:top-16 lg:w-96 lg:left-0 lg:translate-x-0 lg:translate-y-0 text-center lg:text-left">
-          <p className="text-lg opacity-70" style={{ letterSpacing: 10 }}>
+    <section className="">
+      <div className="">
+        <div className="">
+          <p className="" style={{ letterSpacing: 10 }}>
             New Product
           </p>
-          <p className="text-6xl py-8 font-semibold">XX99 MARK II HEADPHONES</p>
-          <p className="opacity-60">
+          <p className="">XX99 MARK II HEADPHONES</p>
+          <p className="">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
 
-          <div className="mt-6">
+          <div className="">
             <button
-              className="bg-buttonOrange px-8 py-2 text-lg uppercase"
+              className=""
               onClick={(e) => {
                 e.preventDefault();
               }}
@@ -65,7 +63,7 @@ export const MainSection = () => {
 
 export const HomePageBody = () => {
   return (
-    <section className="bg-white mt-24 ">
+    <section className="bg-white lg:mt-24 mt-10">
       <div className="container-center grid md:grid-cols-3 sm:grid-cols-1 items-center gap-4">
         <HomePageBodyCard
           title="Headphones"
@@ -99,7 +97,7 @@ export const HomePageBodyCard = ({
   goToUrl,
 }: HomePageBodyCard) => {
   return (
-    <div className="mx-auto mt-12 flex flex-col justify-between items-center w-full col-span-1 bg-[#F1F1F1] rounded-xl">
+    <div className="mx-auto mt-12 flex flex-col justify-between items-center lg:w-full w-3/4 col-span-1 bg-[#F1F1F1] rounded-xl ">
       <img src={imageUrl} alt="" className="-mt-12 w-36 h-32" />
       <div>
         <p className="uppercase font-semibold text-lg">{title}</p>
@@ -125,7 +123,7 @@ export const MidSection = () => {
 
 export const MidSection1 = () => {
   return (
-    <div className="container-center mt-24 ">
+    <div className="container-center mt-24">
       <div className="bg-pattern lg:pt-32 xl:pt-12 pt-4 flex flex-col lg:basis-full lg:flex-row lg:justify-center">
         <picture className="mx-auto lg:mx-0">
           <source
@@ -144,7 +142,7 @@ export const MidSection1 = () => {
         </picture>
 
         {/* Duplicate with Main section text */}
-        <div className="lg:mx-20 lg:mt-20 text-center lg:text-left mx-24">
+        <div className="lg:mx-20 lg:mt-20 text-center lg:text-left mx-10">
           <p className="text-6xl py-8 font-semibold text-white">ZX9 SPEAKER</p>
           <p className="opacity-60">
             Experience natural, lifelike audio and exceptional build quality
@@ -182,7 +180,7 @@ export const MidSection1 = () => {
           />
         </picture>
 
-        <div className="absolute top-1/3 left-40">
+        <div className="absolute lg:top-1/3 lg:left-40 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1 className="text-3xl font-bold">ZX7 Speaker</h1>
           <div className="mt-6 ">
             <button
@@ -198,8 +196,8 @@ export const MidSection1 = () => {
       </div>
 
       {/* Third Section */}
-      <div className="flex flex-row mt-4 gap-4">
-        <picture className="mx-auto lg:mx-0 flex-1 ">
+      <div className="flex flex-col lg:flex-row  mt-4 gap-4 rounded-lg overflow-hidden">
+        <picture className="mx-auto lg:mx-0 flex-1">
           <source
             srcSet={"../../src/images/home/mobile/image-earphones-yx1.jpg"}
             media="(max-width: 480px)"
@@ -211,11 +209,11 @@ export const MidSection1 = () => {
           <img
             src={"../../src/images/home/desktop/image-earphones-yx1.jpg"}
             alt=""
-            className="w-auto h-auto"
+            className=" w-full h-full rounded-lg"
           />
         </picture>
 
-        <div className="flex-1 bg-[#f1f1f1] rounded-lg pt-24 px-10">
+        <div className="flex-1 bg-[#f1f1f1] rounded-lg flex flex-col justify-center items-center text-center lg:justify-center lg:items-start lg:pl-16 p-6 lg:p-0">
           <h1 className="text-3xl font-bold">YX1 EARPHONES</h1>
           <div className="mt-6">
             <button
@@ -249,12 +247,12 @@ export const BottomSection = () => {
       </picture>
 
       <div className="lg:mr-40 lg:w-1/2">
-        <h2 className="uppercase leading-10 text-xl my-4 md:my-8 tracking-ap-2 font-bold md:text-4xl md:mx-auto ml-0">
+        <h2 className="uppercase leading-10 text-xl my-4 md:my-8 font-bold md:text-4xl md:mx-auto ml-0">
           Bringing you the <span className="text-[#d87d4a]">best</span> audio
           gear
         </h2>
 
-        <p className="opacity-50 font-medium pt-10">
+        <p className="opacity-50 font-medium">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for

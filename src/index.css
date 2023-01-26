@@ -12,6 +12,6 @@ html {
 
 @layer components {
   .container-center {
-    @apply container mx-auto xl:px-40;
+    @apply container mx-auto xl:px-40 px-4;
   }
 }

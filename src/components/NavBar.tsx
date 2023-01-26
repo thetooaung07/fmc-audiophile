@@ -20,7 +20,7 @@ export const NavBar = () => {
           isOpen ? "open-slide" : "close-slide"
         } md:hidden absolute z-10 left-0 right-0 bg-white top-[85px] py-10`}
       >
-        <div className=" grid grid-cols-3 items-center gap-2 mx-4">
+        <div className=" grid md:grid-cols-3 sm:grid-cols-1 items-center gap-2 mx-4">
           <HomePageBodyCard
             title="Headphones"
             imageUrl={Headphones}
@@ -41,7 +41,7 @@ export const NavBar = () => {
 
       <nav className="container-center text-white">
         <div
-          className="flex justify-between items-center py-6"
+          className="flex justify-between items-center py-6 "
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
         >
           <div className="flex items-center">
