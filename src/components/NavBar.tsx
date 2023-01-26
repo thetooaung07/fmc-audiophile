@@ -14,13 +14,9 @@ export const NavBar = () => {
   }
 
   return (
-    <div className="bg-black nav-section relative">
-      <div
-        className={` ${
-          isOpen ? "open-slide" : "close-slide"
-        } md:hidden absolute z-10 left-0 right-0 bg-white top-[85px] py-10`}
-      >
-        <div className=" grid md:grid-cols-3 sm:grid-cols-1 items-center gap-2 mx-4">
+    <div className="bg-black text-white">
+      <div>
+        {/* <div className="">
           <HomePageBodyCard
             title="Headphones"
             imageUrl={Headphones}
@@ -36,30 +32,27 @@ export const NavBar = () => {
             imageUrl={Earphones}
             goToUrl="/earphones"
           ></HomePageBodyCard>
-        </div>
+        </div> */}
       </div>
 
-      <nav className="container-center text-white">
+      <nav className="mx-4">
         <div
-          className="flex justify-between items-center py-6 "
+          className="flex justify-between items-center"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
         >
-          <div className="flex items-center">
-            <div className="md:hidden block">
-              <button
-                onClick={openMenu}
-                className={`${
-                  isOpen ? "open" : ""
-                } w-6 menu-btn cursor-pointer relative mr-6 focus:outline-none`}
-              >
-                <span className="hamburger-top"></span>
-                <span className="hamburger-middle"></span>
-                <span className="hamburger-bottom"></span>
-              </button>
-            </div>
-            <header className="font-bold text-3xl ">audiophile</header>
+          <div className="">
+            <button
+              className={`${isOpen && "open"}  menu-btn w-6`}
+              onClick={openMenu}
+            >
+              <span className="hamburger-top"></span>
+              <span className="hamburger-middle"></span>
+              <span className="hamburger-bottom"></span>
+            </button>
           </div>
-          <div className="space-x-9 md:flex hidden">
+          <header className="text-3xl">audiophile</header>
+
+          <div className="hidden md:block ">
             <Link to={"/"} className="uppercase font-semibold">
               Home
             </Link>
