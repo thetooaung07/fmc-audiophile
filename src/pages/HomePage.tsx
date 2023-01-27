@@ -64,7 +64,7 @@ export const MainSection = () => {
 export const HomePageBody = () => {
   return (
     <section
-      className={`flex flex-col md:flex-row mt-24 gap-12 md:container md:mx-auto ${EQUAL_SPACING}`}
+      className={`flex flex-col md:flex-row mt-24 gap-12 md:container md:mx-auto ${EQUAL_SPACING} mb-10`}
     >
       <HomePageBodyCard
         title="Headphones"
@@ -97,7 +97,7 @@ export const HomePageBodyCard = ({
   goToUrl,
 }: HomePageBodyCard) => {
   return (
-    <div className="bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-20 rounded-xl flex flex-col justify-between items-center md:flex-1">
+    <div className="bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-10  rounded-xl flex flex-col justify-between items-center md:flex-1">
       <img src={imageUrl} alt="" className="w-36 h-32 -mt-10" />
       <div>
         <p className="">{title}</p>
