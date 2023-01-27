@@ -35,12 +35,12 @@ export const NavBar = () => {
         </div> */}
       </div>
 
-      <nav className="mx-4">
+      <nav className="mx-4 lg:container lg:mx-auto">
         <div
-          className="flex justify-between items-center"
+          className="flex justify-between items-center py-4  lg:py-8"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
         >
-          <div className="">
+          <div className="block md:hidden">
             <button
               className={`${isOpen && "open"}  menu-btn w-6`}
               onClick={openMenu}
@@ -52,7 +52,7 @@ export const NavBar = () => {
           </div>
           <header className="text-3xl">audiophile</header>
 
-          <div className="hidden md:block ">
+          <div className="hidden md:flex justify-between space-x-12">
             <Link to={"/"} className="uppercase font-semibold">
               Home
             </Link>
