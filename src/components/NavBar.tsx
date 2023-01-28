@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Routes, useLocation } from "react-router-dom";
 import { TailwindShoppingCartSVG } from "../images/cart/tailwind-cart";
 import Earphones from "../images/shared/desktop/image-earphones.png";
 import Headphones from "../images/shared/desktop/image-headphones.png";
 import Speakers from "../images/shared/desktop/image-speakers.png";
 import { HomePageBodyCard } from "../pages/HomePage";
 
-type routes = "home" | "headphones" | "speakers" | "earphones";
+// type routes = "" | "headphones" | "speakers" | "earphones";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isActive, setIsActive] = useState("home");
+  const location = useLocation();
+  const routeNameUrl = location.pathname;
+  const [isActive, setIsActive] = useState(routeNameUrl);
+  console.log(location.pathname);
 
-  function handleActive(routeName: routes) {
+  useEffect(() => {
+    handleActive(routeNameUrl);
+  }, [location]);
+
+  function handleActive(routeName: string) {
     setIsActive(routeName);
   }
 
@@ -62,36 +69,36 @@ export const NavBar = () => {
           <div className="hidden md:flex justify-between space-x-12">
             <Link
               to={"/"}
-              onClick={() => setIsActive("home")}
+              onClick={() => handleActive("/")}
               className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
-                isActive == "home" && "text-buttonOrange"
+                isActive == "/" && "text-buttonOrange"
               }`}
             >
               Home
             </Link>
             <Link
               to={"/headphones"}
-              onClick={() => setIsActive("headphones")}
+              onClick={() => handleActive("/headphones")}
               className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80  ${
-                isActive == "headphones" && "text-buttonOrange"
+                isActive == "/headphones" && "text-buttonOrange"
               }`}
             >
               Headphones
             </Link>
             <Link
               to={"/speakers"}
-              onClick={() => setIsActive("speakers")}
+              onClick={() => handleActive("/speakers")}
               className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
-                isActive == "speakers" && "text-buttonOrange"
+                isActive == "/speakers" && "text-buttonOrange"
               }`}
             >
               Speakers
             </Link>
             <Link
               to={"/earphones"}
-              onClick={() => setIsActive("earphones")}
+              onClick={() => handleActive("/earphones")}
               className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
-                isActive == "earphones" && "text-buttonOrange"
+                isActive == "/earphones" && "text-buttonOrange"
               }`}
             >
               Earphones

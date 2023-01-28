@@ -2,9 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { CheckoutPage } from "./pages/CheckoutPage";
+import { Earphones } from "./pages/Earphones";
 import { EarphonesPage } from "./pages/EarphonesPage";
-import { HeadphonesPage } from "./pages/Headphones";
+import { Headphones } from "./pages/Headphones";
 import { HomePage } from "./pages/HomePage";
+import { Speakers } from "./pages/Speakers";
 import { SpeakersPage } from "./pages/SpeakersPage";
 import { UnknownRoute } from "./pages/UnknownRoute";
 
@@ -14,9 +16,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/headphones" element={<HeadphonesPage />} />
-        <Route path="/speakers" element={<SpeakersPage />} />
-        <Route path="/earphones" element={<EarphonesPage />} />
+        <Route path="/headphones" element={<Headphones />} />
+        <Route path="/speakers" element={<Speakers />} />
+        <Route path="/earphones" element={<Earphones />} />
 
         <Route path="*" element={<UnknownRoute></UnknownRoute>} />
       </Routes>

@@ -221,7 +221,9 @@ export const MidSection = () => {
 
 export const BottomSection = () => {
   return (
-    <div className="mt-16 mx-8 md:container-center md:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8">
+    <div
+      className={`${EQUAL_SPACING} mx-8 md:container-center md:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
+    >
       <picture className="lg:flex-1">
         <source
           media="(max-width: 640px)"
@@ -258,7 +260,7 @@ export const BottomSection = () => {
 
 export const Footer = () => {
   return (
-    <section className="bg-black text-white pb-5 mt-16 ">
+    <section className={`bg-black text-white pb-5 ${EQUAL_SPACING}`}>
       <div className="mx-8 md:container-center">
         <div className="text-center">
           <div className="flex flex-col justify-center items-center relative pt-8 md:pt-0 md:flex-row md:justify-between md:items-center">
