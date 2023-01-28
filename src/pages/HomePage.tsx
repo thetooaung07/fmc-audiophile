@@ -10,6 +10,22 @@ import FacebookIcon from "../images/shared/facebook.svg";
 import InstagramIcon from "../images/shared/instagram.svg";
 import TwitterIcon from "../images/shared/twitter.svg";
 
+import ImageBestGeardesktop from "../../src/images/shared/desktop/image-best-gear.jpg";
+import ImageBestGearmobile from "../../src/images/shared/mobile/image-best-gear.jpg";
+import ImageBestGeartablet from "../../src/images/shared/tablet/image-best-gear.jpg";
+
+import EarphoneYx1desktop from "../../src/images/home/desktop/image-earphones-yx1.jpg";
+import EarphoneYx1mobile from "../../src/images/home/mobile/image-earphones-yx1.jpg";
+import EarphoneYx1tablet from "../../src/images/home/tablet/image-earphones-yx1.jpg";
+
+import SpeakerZx7desktop from "../../src/images/home/desktop/image-speaker-zx7.jpg";
+import SpeakerZx7mobile from "../../src/images/home/mobile/image-speaker-zx7.jpg";
+import SpeakerZx7tablet from "../../src/images/home/tablet/image-speaker-zx7.jpg";
+
+import SpeakerZx9desktop from "../../src/images/home/desktop/image-speaker-zx9.png";
+import SpeakerZx9mobile from "../../src/images/home/mobile/image-speaker-zx9.png";
+import SpeakerZx9tablet from "../../src/images/home/tablet/image-speaker-zx9.png";
+
 export const EQUAL_SPACING = "mt-24";
 
 export const HomePage = () => {
@@ -115,16 +131,10 @@ export const MidSection = () => {
     <div className={`mx-10 md:container-center md:mx-auto`}>
       <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
         <picture className="">
-          <source
-            srcSet={"../../src/images/home/mobile/image-speaker-zx9.png"}
-            media="(max-width: 640px)"
-          />
-          <source
-            srcSet={"../../src/images/home/tablet/image-speaker-zx9.png"}
-            media="(max-width: 1024px)"
-          />
+          <source srcSet={SpeakerZx9mobile} media="(max-width: 640px)" />
+          <source srcSet={SpeakerZx9tablet} media="(max-width: 1024px)" />
           <img
-            src={"../../src/images/home/desktop/image-speaker-zx9.png"}
+            src={SpeakerZx9desktop}
             alt=""
             className="w-1/2 h-1/2 mx-auto mt-4 lg:mt-20 lg:-mb-2"
           />
@@ -167,35 +177,19 @@ export const MidSection = () => {
           </div>
         </div>
         <picture className="rounded-lg overflow-hidden">
-          <source
-            srcSet={"../../src/images/home/mobile/image-speaker-zx7.jpg"}
-            media="(max-width: 640px)"
-          />
-          <source
-            srcSet={"../../src/images/home/tablet/image-speaker-zx7.jpg"}
-            media="(max-width: 1024px)"
-          />
-          <img
-            src={"../../src/images/home/desktop/image-speaker-zx7.jpg"}
-            alt=""
-            className="md:w-full"
-          />
+          <source srcSet={SpeakerZx7mobile} media="(max-width: 640px)" />
+          <source srcSet={SpeakerZx7tablet} media="(max-width: 1024px)" />
+          <img src={SpeakerZx7desktop} alt="" className="md:w-full" />
         </picture>
       </div>
 
       {/* Third Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl overflow-hidden">
         <picture className="">
-          <source
-            srcSet={"../../src/images/home/mobile/image-earphones-yx1.jpg"}
-            media="(max-width: 640px)"
-          />
-          <source
-            srcSet={"../../src/images/home/tablet/image-earphones-yx1.jpg"}
-            media="(max-width: 1024px)"
-          />
+          <source srcSet={EarphoneYx1mobile} media="(max-width: 640px)" />
+          <source srcSet={EarphoneYx1tablet} media="(max-width: 1024px)" />
           <img
-            src={"../../src/images/home/desktop/image-earphones-yx1.jpg"}
+            src={EarphoneYx1desktop}
             alt=""
             className="w-full h-60 rounded-xl lg:h-full"
           />
@@ -225,16 +219,10 @@ export const BottomSection = () => {
       className={`${EQUAL_SPACING} mx-8 md:container-center md:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
     >
       <picture className="lg:flex-1">
-        <source
-          media="(max-width: 640px)"
-          srcSet={"../../src/images/shared/mobile/image-best-gear.jpg"}
-        />
-        <source
-          media="(max-width: 1024px)"
-          srcSet={"../../src/images/shared/tablet/image-best-gear.jpg"}
-        />
+        <source media="(max-width: 640px)" srcSet={ImageBestGearmobile} />
+        <source media="(max-width: 1024px)" srcSet={ImageBestGeartablet} />
         <img
-          src="../../src/images/shared/desktop/image-best-gear.jpg"
+          src={ImageBestGeardesktop}
           className="w-full h-auto lg:pl-20"
           alt=""
         />

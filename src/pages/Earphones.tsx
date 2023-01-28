@@ -2,6 +2,10 @@ import React from "react";
 import { ProductCard } from "../components/ProductCard";
 import { BottomSection, EQUAL_SPACING, Footer, HomePageBody } from "./HomePage";
 
+import EarphoneDesktop from "../../src/images/category-earphones/desktop/image-yx1-earphones.jpg";
+import EarphoneMobile from "../../src/images/category-earphones/mobile/image-yx1-earphones.jpg";
+import EarphoneTablet from "../../src/images/category-earphones/tablet/image-yx1-earphones.jpg";
+
 export const Earphones = () => {
   return (
     <section>
@@ -17,12 +21,9 @@ export const Earphones = () => {
           productName="YX1 WIRELESS EARPHONES"
           description="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
           imageSrcSet={{
-            mobile:
-              "../../src/images/category-earphones/mobile/image-yx1-earphones.jpg",
-            tablet:
-              "../../src/images/category-earphones/tablet/image-yx1-earphones.jpg",
-            desktop:
-              "../../src/images/category-earphones/desktop/image-yx1-earphones.jpg",
+            mobile: EarphoneMobile,
+            tablet: EarphoneTablet,
+            desktop: EarphoneDesktop,
           }}
           isNew={true}
           btnOnClick={() => {}}

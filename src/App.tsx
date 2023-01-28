@@ -3,11 +3,9 @@ import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Earphones } from "./pages/Earphones";
-
 import { Headphones } from "./pages/Headphones";
 import { HomePage } from "./pages/HomePage";
 import { Speakers } from "./pages/Speakers";
-
 import { UnknownRoute } from "./pages/UnknownRoute";
 
 function App() {
