@@ -12,16 +12,16 @@ html {
 
 @layer components {
   .container-center {
-    @apply container mx-auto xl:px-40;
+    @apply container mx-auto md:w-2/3;
   }
   .absolute-center {
     @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
 
   .trans-hover {
-    @apply px-5 py-3 bg-transparent border border-black text-black text-xl hover:bg-[#000000] hover:text-white hover:transition;
+    @apply px-5 py-3 bg-transparent border border-black text-black tracking-wide uppercase hover:bg-[#000000] hover:text-white hover:transition;
   }
   .trans-hover-inverse {
-    @apply px-5 py-3 bg-black border border-black text-white text-xl hover:bg-transparent  hover:text-black hover:transition;
+    @apply px-5 py-3 bg-black border border-black text-white tracking-wide uppercase hover:bg-transparent  hover:text-black hover:transition;
   }
 }

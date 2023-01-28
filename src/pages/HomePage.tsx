@@ -10,7 +10,7 @@ import FacebookIcon from "../images/shared/facebook.svg";
 import InstagramIcon from "../images/shared/instagram.svg";
 import TwitterIcon from "../images/shared/twitter.svg";
 
-const EQUAL_SPACING = "mt-24";
+export const EQUAL_SPACING = "mt-24";
 
 export const HomePage = () => {
   return (
@@ -27,15 +27,15 @@ export const HomePage = () => {
 export const MainSection = () => {
   return (
     <section className="bg-black">
-      <div className=" md:mx-auto md:container relative">
-        <div className="absolute absolute-center md:left-0 w-full md:w-1/2  text-white flex flex-col justify-between items-center md:items-start md:translate-x-0 ">
-          <p className="mb-4 opacity-60" style={{ letterSpacing: 10 }}>
+      <div className=" md:mx-auto md:container-center relative">
+        <div className="absolute absolute-center md:left-0 w-full lg:w-2/3 lg:max-w-lg text-white flex flex-col justify-between items-center lg:items-start md:translate-x-0 lg:container-center">
+          <p className="opacity-60" style={{ letterSpacing: 10 }}>
             New Product
           </p>
-          <p className="text-5xl text-center md:text-left font-bold tracking-wider md:text6xl ">
+          <p className="text-5xl text-center lg:text-left font-bold tracking-wider lg:text6xl mb-5 mt-6">
             XX99 MARK II HEADPHONES
           </p>
-          <p className="text-center md:text-left py-4 w-2/3 mb-4">
+          <p className="text-center lg:text-left py-4 w-2/3 mb-4 opacity-60">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
@@ -64,7 +64,7 @@ export const MainSection = () => {
 export const HomePageBody = () => {
   return (
     <section
-      className={`flex flex-col md:flex-row mt-24 gap-12 md:container md:mx-auto ${EQUAL_SPACING} mb-10`}
+      className={`flex flex-col md:flex-row mt-24 gap-12 md:container-center md:mx-auto ${EQUAL_SPACING} mb-10`}
     >
       <HomePageBodyCard
         title="Headphones"
@@ -97,13 +97,13 @@ export const HomePageBodyCard = ({
   goToUrl,
 }: HomePageBodyCard) => {
   return (
-    <div className="bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-10  rounded-xl flex flex-col justify-between items-center md:flex-1">
+    <div className="bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-10 rounded-xl flex flex-col justify-between items-center md:flex-1">
       <img src={imageUrl} alt="" className="w-36 h-32 -mt-10" />
       <div>
         <p className="">{title}</p>
         <Link to={goToUrl} className="flex justify-center">
           <p className="">Shop </p>
-          <p className="">&gt;</p>
+          <p className=""> &gt;</p>
         </Link>
       </div>
     </div>
@@ -112,8 +112,8 @@ export const HomePageBodyCard = ({
 
 export const MidSection = () => {
   return (
-    <div className={`mx-10 md:container md:mx-auto`}>
-      <div className="bg-pattern flex justify-center items-center flex-col">
+    <div className={`mx-10 md:container-center md:mx-auto`}>
+      <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
         <picture className="">
           <source
             srcSet={"../../src/images/home/mobile/image-speaker-zx9.png"}
@@ -126,14 +126,14 @@ export const MidSection = () => {
           <img
             src={"../../src/images/home/desktop/image-speaker-zx9.png"}
             alt=""
-            className="w-1/2 h-1/2 mx-auto mt-4"
+            className="w-1/2 h-1/2 mx-auto mt-4 lg:mt-20 lg:-mb-2"
           />
         </picture>
 
         {/* Duplicate with Main section text */}
-        <div className="py-5 flex flex-col justify-center items-center">
+        <div className="py-5 flex flex-col justify-center items-center lg:items-start text-white ">
           <p className="text-3xl lg:text-6xl">ZX9 SPEAKER</p>
-          <p className="text-center opacity-75 py-4">
+          <p className="text-center lg:text-left opacity-75 py-6 lg:w-2/3 w-1/2">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
@@ -221,7 +221,7 @@ export const MidSection = () => {
 
 export const BottomSection = () => {
   return (
-    <div className="mt-16 mx-8 md:container md:mx-auto lg:flex lg:flex-row-reverse lg:gap-8">
+    <div className="mt-16 mx-8 md:container-center md:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8">
       <picture className="lg:flex-1">
         <source
           media="(max-width: 640px)"
@@ -233,7 +233,7 @@ export const BottomSection = () => {
         />
         <img
           src="../../src/images/shared/desktop/image-best-gear.jpg"
-          className="w-full h-auto"
+          className="w-full h-auto lg:pl-20"
           alt=""
         />
       </picture>
@@ -256,16 +256,16 @@ export const BottomSection = () => {
   );
 };
 
-const Footer = () => {
+export const Footer = () => {
   return (
-    <section className="bg-black text-white pb-5 mt-16">
-      <div className="mx-8">
+    <section className="bg-black text-white pb-5 mt-16 ">
+      <div className="mx-8 md:container-center">
         <div className="text-center">
-          <div className="flex flex-col justify-center items-center relative pt-8">
+          <div className="flex flex-col justify-center items-center relative pt-8 md:pt-0 md:flex-row md:justify-between md:items-center">
             <div className="absolute w-32 h-2 top-0 bg-buttonOrange rounded-lg "></div>
             <h3 className="font-bold text-3xl lg:text-4xl">audiophile</h3>
 
-            <div className="my-8 flex flex-col text-center gap-y-2 text-lg ">
+            <div className="my-8 flex flex-col text-center gap-y-2 text-lg md:flex-row md:gap-x-10">
               <Link
                 className="uppercase transition-opacity opacity-60 hover:opacity-100"
                 to={"/"}
@@ -292,15 +292,16 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="">
-            <p className="opacity-60 text-center">
-              Audiophile is an all in one stop to fulfill your audio needs.
-              We're a small team of music lovers and sound specialists who are
-              devoted to helping you get the most out of personal audio. Come
-              and visit our demo facility - we’re open 7 days a week.
-            </p>
 
-            <div className="my-8 text-center opacity-60">
+          <p className="w-full opacity-60 text-center md:text-left lg:w-1/2">
+            Audiophile is an all in one stop to fulfill your audio needs. We're
+            a small team of music lovers and sound specialists who are devoted
+            to helping you get the most out of personal audio. Come and visit
+            our demo facility - we’re open 7 days a week.
+          </p>
+
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+            <div className="my-8 text-center opacity-60 md:text-left">
               Copyright 2021. All Rights Reserved
             </div>
 

@@ -6,8 +6,15 @@ import Headphones from "../images/shared/desktop/image-headphones.png";
 import Speakers from "../images/shared/desktop/image-speakers.png";
 import { HomePageBodyCard } from "../pages/HomePage";
 
+type routes = "home" | "headphones" | "speakers" | "earphones";
+
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState("home");
+
+  function handleActive(routeName: routes) {
+    setIsActive(routeName);
+  }
 
   function openMenu() {
     setIsOpen(!isOpen);
@@ -35,7 +42,7 @@ export const NavBar = () => {
         </div> */}
       </div>
 
-      <nav className="mx-4 lg:container lg:mx-auto">
+      <nav className="mx-4 md:container-center md:mx-auto">
         <div
           className="flex justify-between items-center py-4  lg:py-8"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
@@ -53,16 +60,40 @@ export const NavBar = () => {
           <header className="text-3xl">audiophile</header>
 
           <div className="hidden md:flex justify-between space-x-12">
-            <Link to={"/"} className="uppercase font-semibold">
+            <Link
+              to={"/"}
+              onClick={() => setIsActive("home")}
+              className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
+                isActive == "home" && "text-buttonOrange"
+              }`}
+            >
               Home
             </Link>
-            <Link to={"/headphones"} className="uppercase font-semibold">
+            <Link
+              to={"/headphones"}
+              onClick={() => setIsActive("headphones")}
+              className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80  ${
+                isActive == "headphones" && "text-buttonOrange"
+              }`}
+            >
               Headphones
             </Link>
-            <Link to={"/speakers"} className="uppercase font-semibold">
+            <Link
+              to={"/speakers"}
+              onClick={() => setIsActive("speakers")}
+              className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
+                isActive == "speakers" && "text-buttonOrange"
+              }`}
+            >
               Speakers
             </Link>
-            <Link to={"/earphones"} className="uppercase font-semibold">
+            <Link
+              to={"/earphones"}
+              onClick={() => setIsActive("earphones")}
+              className={`uppercase font-semibold hover:text-buttonOrange hover:opacity-80 ${
+                isActive == "earphones" && "text-buttonOrange"
+              }`}
+            >
               Earphones
             </Link>
           </div>
