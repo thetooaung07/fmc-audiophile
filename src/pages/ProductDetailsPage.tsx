@@ -9,13 +9,13 @@ import { BottomSection, Footer, HomePageBody, MidSection } from "./HomePage";
 
 export const ProductDetails = () => {
   const { selectedProduct } = useProductContext();
-  console.log(selectedProduct);
+  console.log(selectedProduct?.features.split("\n\n"));
 
   const navigate = useNavigate();
   return (
     <section className="md:container-center mx-5">
       <div
-        className="opacity-60 py-4 cursor-pointer"
+        className="opacity-60 py-8 cursor-pointer"
         onClick={() => {
           navigate(-1);
         }}
@@ -38,33 +38,28 @@ export const ProductDetails = () => {
       ></DetailsProductCard>
 
       {/* Features and In the Box */}
-      <div className={`flex ${EQUAL_SPACING}`}>
-        <div className="Features w-2/3">
+      <div
+        className={`flex ${EQUAL_SPACING} justify-between items-start gap-x-20 flex-col lg:flex-row`}
+      >
+        <div className="Features w-full lg:w-2/3 mr-24">
           <h2 className="uppercase text-3xl font-bold py-8">Features</h2>
           <p className="opacity-70 pb-4">
-            Featuring a genuine leather head strap and premium earcups, these
-            headphones deliver superior comfort for those who like to enjoy
-            endless listening. It includes intuitive controls designed for any
-            situation. Whether you’re taking a business call or just in your own
-            personal space, the auto on/off and pause features ensure that
-            you’ll never miss a beat.
+            {selectedProduct?.features.split("\n\n")[0]}
           </p>
           <p className="opacity-70 pb-4">
-            The advanced Active Noise Cancellation with built-in equalizer allow
-            you to experience your audio world on your terms. It lets you enjoy
-            your audio in peace, but quickly interact with your surroundings
-            when you need to. Combined with Bluetooth 5. 0 compliant
-            connectivity and 17 hour battery life, the XX99 Mark II headphones
-            gives you superior sound, cutting-edge technology, and a modern
-            design aesthetic.
+            {selectedProduct?.features.split("\n\n")[1]}
           </p>
         </div>
 
-        <div className="In-The-Box ml-24">
+        <div className="In-The-Box w-full lg:w-1/3">
           <h1 className="uppercase text-3xl font-bold py-8">In The Box</h1>
-          <InTheBoxItem></InTheBoxItem>
-          <InTheBoxItem></InTheBoxItem>
-          <InTheBoxItem></InTheBoxItem>
+          {selectedProduct?.includedItems.map((e, index) => (
+            <InTheBoxItem
+              count={e.quantity}
+              item={e.item}
+              key={index}
+            ></InTheBoxItem>
+          ))}
         </div>
       </div>
 
@@ -79,14 +74,19 @@ export const ProductDetails = () => {
 export const YouMayAlsoLike = () => {
   const { selectedProduct } = useProductContext();
   return (
-    <section className={`${EQUAL_SPACING} h-screen`}>
+    <section
+      className={`md:h-max md:mt-20 lg:h-[80vh] flex justify-center items-center flex-col`}
+    >
       <h2 className="text-4xl font-bold text-center">You May Also Like</h2>
 
       <div
-        className={`flex flex-col md:flex-row mt-24 gap-12 md:mx-auto ${EQUAL_SPACING} mb-10`}
+        className={`flex flex-col md:flex-row gap-12 md:mx-auto ${EQUAL_SPACING} mb-10 mt-10`}
       >
-        {selectedProduct?.others.map((e) => (
-          <div className="flex flex-col justify-center items-center">
+        {selectedProduct?.others.map((e, index) => (
+          <div
+            className="flex flex-col justify-center items-center"
+            key={index}
+          >
             <PictureComponent
               imageSrcSet={{
                 mobile: e.image.mobile,
@@ -96,7 +96,7 @@ export const YouMayAlsoLike = () => {
               imgClassName=""
               pictureClassName=""
             />
-            <h2 className="text-2xl font-bold py-8">{e.name}</h2>
+            <h2 className="text-2xl font-bold py-4">{e.name}</h2>
             <button className="trans-hover-inverse bg-buttonOrange uppercase">
               See Product
             </button>
@@ -107,12 +107,17 @@ export const YouMayAlsoLike = () => {
   );
 };
 
-export const InTheBoxItem = () => {
+type InTheBoxItemType = {
+  count: number;
+  item: string;
+};
+
+export const InTheBoxItem = ({ count, item }: InTheBoxItemType) => {
   return (
-    <div className="flex pb-2">
-      <p>1x</p>
+    <div className="flex pb-2 items-center">
+      <p className="text-buttonOrange font-bold text-lg">{count}x</p>
       <div className="w-5"></div>
-      <p>Headphone Unit</p>
+      <p className="text-lg">{item}</p>
     </div>
   );
 };
@@ -121,38 +126,36 @@ export const GridGallery = () => {
   const { selectedProduct } = useProductContext();
   return (
     <div className={`grid grid-cols-5 gap-4 ${EQUAL_SPACING}`}>
-      <div className="col-span-2 row-span-1 bg-black">
+      <div className="col-span-2 row-span-1 ">
         <PictureComponent
           imageSrcSet={{
             mobile: selectedProduct?.gallery.first.mobile || "",
             tablet: selectedProduct?.gallery.first.tablet || "",
             desktop: selectedProduct?.gallery.first.desktop || "",
           }}
-          imgClassName=""
+          imgClassName="w-full h-full rounded-xl"
           pictureClassName=""
         ></PictureComponent>
       </div>
-      <div className="col-span-3 row-span-2 bg-black">
-        {" "}
-        <PictureComponent
-          imageSrcSet={{
-            mobile: selectedProduct?.gallery.second.mobile || "",
-            tablet: selectedProduct?.gallery.second.tablet || "",
-            desktop: selectedProduct?.gallery.second.desktop || "",
-          }}
-          imgClassName=""
-          pictureClassName=""
-        ></PictureComponent>
-      </div>
-      <div className="col-span-2 row-span-1 bg-black">
-        {" "}
+      <div className="col-span-3 row-span-2 ">
         <PictureComponent
           imageSrcSet={{
             mobile: selectedProduct?.gallery.third.mobile || "",
             tablet: selectedProduct?.gallery.third.tablet || "",
             desktop: selectedProduct?.gallery.third.desktop || "",
           }}
-          imgClassName=""
+          imgClassName="w-full h-full rounded-xl"
+          pictureClassName=""
+        ></PictureComponent>
+      </div>
+      <div className="col-span-2 row-span-1 ">
+        <PictureComponent
+          imageSrcSet={{
+            mobile: selectedProduct?.gallery.second.mobile || "",
+            tablet: selectedProduct?.gallery.second.tablet || "",
+            desktop: selectedProduct?.gallery.second.desktop || "",
+          }}
+          imgClassName="w-full h-full rounded-xl"
           pictureClassName=""
         ></PictureComponent>
       </div>
@@ -175,7 +178,11 @@ export const PictureComponent = ({
     <picture className={pictureClassName}>
       <source srcSet={imageSrcSet.mobile} media="(max-width: 640px)" />
       <source srcSet={imageSrcSet.tablet} media="(max-width: 1024px)" />
-      <img src={imageSrcSet.desktop} alt="" className={imgClassName} />
+      <img
+        src={imageSrcSet.desktop}
+        alt=""
+        className={`rounded-2xl ${imgClassName}`}
+      />
     </picture>
   );
 };
