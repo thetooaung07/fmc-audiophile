@@ -13,9 +13,12 @@ import HeadPhoneITablet from "../../src/images/category-headphones/tablet/image-
 import HeadPhoneXXDesktop from "../../src/images/category-headphones/desktop/image-xx59.jpg";
 import HeadPhoneXXMobile from "../../src/images/category-headphones/mobile/image-xx59.jpg";
 import HeadPhoneXXTablet from "../../src/images/category-headphones/tablet/image-xx59.jpg";
+import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
 
 export const Headphones = () => {
+  const productContext = useProductContext();
+  console.log(productContext.products);
   return (
     <section>
       <div className="bg-black">

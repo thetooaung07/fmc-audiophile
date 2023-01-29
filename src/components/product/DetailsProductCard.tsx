@@ -10,8 +10,6 @@ export const DetailsProductCard = ({
   productName,
   btnOnClick,
 }: IProductCard) => {
-  const [count, setCount] = useState(1);
-
   return (
     <div
       className={`flex gap-x-40 flex-col lg:flex-row md:mx-0  ${
@@ -30,31 +28,15 @@ export const DetailsProductCard = ({
             New Product
           </p>
         )}
-        <p className="text-3xl lg:text-4xl">{productName}</p>
+        <p className="text-3xl lg:text-4xl font-bold">{productName}</p>
         <p className="text-left opacity-75 py-6 w-full ">{description}</p>
 
         <h1 className="mb-4 text-2xl">$2800</h1>
 
         <div className="flex">
-          <div className="flex">
-            <div
-              className="w-16 h-14 flex justify-center items-center text-black bg-white opacity-50"
-              onClick={() => setCount(count - 1)}
-            >
-              -
-            </div>
-            <div className="w-5 h-14 flex justify-center items-center text-black bg-white opacity-50">
-              {count}
-            </div>
-            <div
-              className="w-16 h-14 flex justify-center items-center text-black bg-white opacity-50"
-              onClick={() => setCount(count + 1)}
-            >
-              +
-            </div>
-          </div>
+          <PlusMinusBtn></PlusMinusBtn>
           <button
-            className="trans-hover bg-buttonOrange text-white border-transparent"
+            className="trans-hover bg-buttonOrange text-white border-transparent ml-8"
             onClick={(e) => {
               e.preventDefault();
             }}
@@ -62,6 +44,29 @@ export const DetailsProductCard = ({
             Add Product
           </button>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const PlusMinusBtn = () => {
+  const [count, setCount] = useState(1);
+  return (
+    <div className="flex">
+      <div
+        className="w-16 h-14 flex justify-center items-center text-black  bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        onClick={() => setCount(count - 1)}
+      >
+        -
+      </div>
+      <div className="w-12 h-14 flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg font-bold">
+        {count}
+      </div>
+      <div
+        className="w-16 h-14 flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        onClick={() => setCount(count + 1)}
+      >
+        +
       </div>
     </div>
   );

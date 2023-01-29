@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../App.css";
 import HeroImageDesktop from "../images/home/desktop/image-hero.jpg";
 import HeroImageMobile from "../images/home/mobile/image-hero.jpg";
@@ -40,6 +40,8 @@ export const HomePage = () => {
 };
 
 export const MainSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-black">
       <div className=" md:mx-auto md:container-center relative">
@@ -60,6 +62,7 @@ export const MainSection = () => {
               className=""
               onClick={(e) => {
                 e.preventDefault();
+                navigate("/speakers/details/abcd");
               }}
             >
               See Product

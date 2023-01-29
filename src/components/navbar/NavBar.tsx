@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes, useLocation } from "react-router-dom";
+import Earphones from "../../../src/images/shared/desktop/image-earphones.png";
+import Headphones from "../../../src/images/shared/desktop/image-headphones.png";
+import Speakers from "../../../src/images/shared/desktop/image-speakers.png";
 import { TailwindShoppingCartSVG } from "../../images/cart/tailwind-cart";
 import { HomePageBodyCard } from "../../pages/HomePage";
-import Earphones from "../images/shared/desktop/image-earphones.png";
-import Headphones from "../images/shared/desktop/image-headphones.png";
-import Speakers from "../images/shared/desktop/image-speakers.png";
 
 // type routes = "" | "headphones" | "speakers" | "earphones";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const routeNameUrl = location.pathname;
-  const [isActive, setIsActive] = useState(routeNameUrl);
-  console.log(location.pathname);
+  const [isActive, setIsActive] = useState(location.pathname);
 
   useEffect(() => {
-    handleActive(routeNameUrl);
+    handleActive(location.pathname);
   }, [location]);
 
   function handleActive(routeName: string) {
@@ -30,8 +28,8 @@ export const NavBar = () => {
   return (
     <div className="bg-black text-white">
       <div>
-        {/* <div className="">
-          <HomePageBodyCard
+        <div className="">
+          {/* <HomePageBodyCard
             title="Headphones"
             imageUrl={Headphones}
             goToUrl="/headphones"
@@ -45,8 +43,8 @@ export const NavBar = () => {
             title="Earphones"
             imageUrl={Earphones}
             goToUrl="/earphones"
-          ></HomePageBodyCard>
-        </div> */}
+          ></HomePageBodyCard> */}
+        </div>
       </div>
 
       <nav className="mx-4 xl:container-center md:mx-auto">
