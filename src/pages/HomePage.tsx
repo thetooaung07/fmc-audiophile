@@ -31,10 +31,12 @@ export const HomePage = () => {
   return (
     <>
       <MainSection></MainSection>
-      <HomePageBody></HomePageBody>
-      <MidSection></MidSection>
-      <BottomSection></BottomSection>
-      <Footer></Footer>
+
+      <div className="md:container-center">
+        <HomePageBody></HomePageBody>
+        <MidSection></MidSection>
+        <BottomSection></BottomSection>
+      </div>
     </>
   );
 };
@@ -82,7 +84,7 @@ export const MainSection = () => {
 export const HomePageBody = () => {
   return (
     <section
-      className={`flex flex-col md:flex-row mt-24 gap-12 md:container-center md:mx-auto ${EQUAL_SPACING} mb-10`}
+      className={`flex flex-col md:flex-row mt-24 gap-12 md:mx-auto ${EQUAL_SPACING} mb-10`}
     >
       <HomePageBodyCard
         title="Headphones"
@@ -130,7 +132,7 @@ export const HomePageBodyCard = ({
 
 export const MidSection = () => {
   return (
-    <div className={`mx-10 md:container-center md:mx-auto`}>
+    <div className={`mx-10  md:mx-auto`}>
       <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
         <picture className="">
           <source srcSet={SpeakerZx9mobile} media="(max-width: 640px)" />
@@ -218,7 +220,7 @@ export const MidSection = () => {
 export const BottomSection = () => {
   return (
     <div
-      className={`${EQUAL_SPACING} mx-8 md:container-center md:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
+      className={`${EQUAL_SPACING} mx-8 lg:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
     >
       <picture className="lg:flex-1">
         <source media="(max-width: 640px)" srcSet={ImageBestGearmobile} />

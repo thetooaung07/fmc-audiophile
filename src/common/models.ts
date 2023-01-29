@@ -7,6 +7,17 @@ export interface IProductCard {
   btnOnClick?: () => void;
 }
 
+export interface IProductDetailsCard {
+  reverse: boolean;
+  productName: string;
+  description: string;
+  imageSrcSet: imageSrcSetType;
+  isNew: boolean;
+  btnOnClick?: () => void;
+  quantity: number;
+  price: number;
+}
+
 export type imageSrcSetType = {
   mobile: string;
   tablet: string;

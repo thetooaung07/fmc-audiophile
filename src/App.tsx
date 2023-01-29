@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { Product } from "./common/models";
 import { NavBar } from "./components/navbar/NavBar";
@@ -7,24 +7,37 @@ import { ProductContext, useProductContext } from "./context";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Earphones } from "./pages/EarphonesPage";
 import { Headphones } from "./pages/HeadphonesPage";
-import { HomePage } from "./pages/HomePage";
+import { Footer, HomePage } from "./pages/HomePage";
 import { ProductDetails } from "./pages/ProductDetailsPage";
 import { Speakers } from "./pages/SpeakersPage";
 import { UnknownRoute } from "./pages/UnknownRoute";
 
 function App() {
-  const [apiData, setApiData] = useState<Product[]>();
-  // const productContext = useProductContext();
-
+  const [apiData, setApiData] = useState<Product[]>([]);
+  const [selectedCardProduct, setSelectedCartProduct] = useState<Product>();
+  const [cartProduct, setCartProudct] = useState<Product[]>([]);
+  const location = useLocation();
   useEffect(() => {
     fetch("./src/product.json")
       .then((res) => res.json())
-      .then((data) => setApiData(data.products));
-  }, []);
+      .then((data) => {
+        setApiData(data.products);
+        setSelectedCartProduct(data.products[0]);
+
+        setCartProudct([data.products[0], data.products[1]]);
+      });
+  }, [location]);
 
   return (
     <ProductContext.Provider
-      value={{ products: apiData, setProducts: setApiData }}
+      value={{
+        products: apiData,
+        setProducts: setApiData,
+        setCartProudct: setCartProudct,
+        cartProduct: cartProduct,
+        selectedProduct: selectedCardProduct,
+        setSelectedProduct: setSelectedCartProduct,
+      }}
     >
       <div className="h-max ">
         <NavBar />
@@ -40,6 +53,7 @@ function App() {
 
           <Route path="*" element={<UnknownRoute></UnknownRoute>} />
         </Routes>
+        <Footer></Footer>
       </div>
     </ProductContext.Provider>
   );

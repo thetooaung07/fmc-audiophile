@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IProductCard } from "../../common/models";
+import { IProductCard, IProductDetailsCard } from "../../common/models";
 import { EQUAL_SPACING } from "../../utils";
 
 export const DetailsProductCard = ({
@@ -9,7 +9,9 @@ export const DetailsProductCard = ({
   isNew,
   productName,
   btnOnClick,
-}: IProductCard) => {
+  price,
+  quantity,
+}: IProductDetailsCard) => {
   return (
     <div
       className={`flex gap-x-40 flex-col lg:flex-row md:mx-0  ${
@@ -31,10 +33,10 @@ export const DetailsProductCard = ({
         <p className="text-3xl lg:text-4xl font-bold">{productName}</p>
         <p className="text-left opacity-75 py-6 w-full ">{description}</p>
 
-        <h1 className="mb-4 text-2xl">$2800</h1>
+        <h1 className="mb-4 text-2xl">${price}</h1>
 
         <div className="flex">
-          <PlusMinusBtn></PlusMinusBtn>
+          <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
           <button
             className="trans-hover bg-buttonOrange text-white border-transparent ml-8"
             onClick={(e) => {
@@ -49,8 +51,12 @@ export const DetailsProductCard = ({
   );
 };
 
-export const PlusMinusBtn = () => {
-  const [count, setCount] = useState(1);
+type PlusMinusBtnType = {
+  quantity: number;
+};
+
+export const PlusMinusBtn = ({ quantity = 1 }: PlusMinusBtnType) => {
+  const [count, setCount] = useState(quantity);
   return (
     <div className="flex">
       <div

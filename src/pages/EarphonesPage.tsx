@@ -29,11 +29,10 @@ export const Earphones = () => {
           isNew={true}
           btnOnClick={() => {}}
         ></HomePageProductCard>
+        <div className={`h-20`}></div>
+        <HomePageBody></HomePageBody>
+        <BottomSection></BottomSection>
       </div>
-      <div className={`h-20`}></div>
-      <HomePageBody></HomePageBody>
-      <BottomSection></BottomSection>
-      <Footer></Footer>
     </section>
   );
 };
