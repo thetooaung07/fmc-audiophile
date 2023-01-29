@@ -49,7 +49,7 @@ export const NavBar = () => {
         </div> */}
       </div>
 
-      <nav className="mx-4 md:px-10 xl:container-center md:mx-auto">
+      <nav className="mx-4 xl:container-center md:mx-auto">
         <div
           className="flex justify-between items-center py-4 lg:py-8"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
