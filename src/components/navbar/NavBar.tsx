@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes, useLocation } from "react-router-dom";
-import { TailwindShoppingCartSVG } from "../images/cart/tailwind-cart";
+import { TailwindShoppingCartSVG } from "../../images/cart/tailwind-cart";
+import { HomePageBodyCard } from "../../pages/HomePage";
 import Earphones from "../images/shared/desktop/image-earphones.png";
 import Headphones from "../images/shared/desktop/image-headphones.png";
 import Speakers from "../images/shared/desktop/image-speakers.png";
-import { HomePageBodyCard } from "../pages/HomePage";
 
 // type routes = "" | "headphones" | "speakers" | "earphones";
 
@@ -49,9 +49,9 @@ export const NavBar = () => {
         </div> */}
       </div>
 
-      <nav className="mx-4 md:container-center md:mx-auto">
+      <nav className="mx-4 md:px-10 xl:container-center md:mx-auto">
         <div
-          className="flex justify-between items-center py-4  lg:py-8"
+          className="flex justify-between items-center py-4 lg:py-8"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
         >
           <div className="block md:hidden">

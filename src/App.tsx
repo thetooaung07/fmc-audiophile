@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { NavBar } from "./components/NavBar";
+import { NavBar } from "./components/navbar/NavBar";
 import { CheckoutPage } from "./pages/CheckoutPage";
-import { Earphones } from "./pages/Earphones";
-import { Headphones } from "./pages/Headphones";
+import { Earphones } from "./pages/EarphonesPage";
+import { Headphones } from "./pages/HeadphonesPage";
 import { HomePage } from "./pages/HomePage";
-import { Speakers } from "./pages/Speakers";
+import { ProductDetails } from "./pages/ProductDetailsPage";
+import { Speakers } from "./pages/SpeakersPage";
 import { UnknownRoute } from "./pages/UnknownRoute";
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
         <Route path="/headphones" element={<Headphones />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/earphones" element={<Earphones />} />
+        <Route
+          path="/:productCategory/details/:productName"
+          element={<ProductDetails />}
+        />
 
         <Route path="*" element={<UnknownRoute></UnknownRoute>} />
       </Routes>

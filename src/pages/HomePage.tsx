@@ -25,8 +25,7 @@ import SpeakerZx7tablet from "../../src/images/home/tablet/image-speaker-zx7.jpg
 import SpeakerZx9desktop from "../../src/images/home/desktop/image-speaker-zx9.png";
 import SpeakerZx9mobile from "../../src/images/home/mobile/image-speaker-zx9.png";
 import SpeakerZx9tablet from "../../src/images/home/tablet/image-speaker-zx9.png";
-
-export const EQUAL_SPACING = "mt-24";
+import { EQUAL_SPACING } from "../utils";
 
 export const HomePage = () => {
   return (

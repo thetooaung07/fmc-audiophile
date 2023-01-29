@@ -1,10 +1,11 @@
 import React from "react";
-import { ProductCard } from "../components/ProductCard";
-import { BottomSection, EQUAL_SPACING, Footer, HomePageBody } from "./HomePage";
+import { HomePageProductCard } from "../components/product/HomeProductCard";
+import { BottomSection, Footer, HomePageBody } from "./HomePage";
 
 import EarphoneDesktop from "../../src/images/category-earphones/desktop/image-yx1-earphones.jpg";
 import EarphoneMobile from "../../src/images/category-earphones/mobile/image-yx1-earphones.jpg";
 import EarphoneTablet from "../../src/images/category-earphones/tablet/image-yx1-earphones.jpg";
+import { EQUAL_SPACING } from "../utils";
 
 export const Earphones = () => {
   return (
@@ -16,7 +17,7 @@ export const Earphones = () => {
       </div>
 
       <div className={`md:container-center ${EQUAL_SPACING}`}>
-        <ProductCard
+        <HomePageProductCard
           reverse={false}
           productName="YX1 WIRELESS EARPHONES"
           description="Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
@@ -27,7 +28,7 @@ export const Earphones = () => {
           }}
           isNew={true}
           btnOnClick={() => {}}
-        ></ProductCard>
+        ></HomePageProductCard>
       </div>
       <div className={`h-20`}></div>
       <HomePageBody></HomePageBody>

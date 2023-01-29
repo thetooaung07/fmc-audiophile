@@ -1,32 +1,18 @@
 import React from "react";
-import { EQUAL_SPACING } from "../pages/HomePage";
+import { IProductCard } from "../../common/models";
+import { EQUAL_SPACING } from "../../utils";
 
-interface IProductCard {
-  reverse: boolean;
-  productName: string;
-  description: string;
-  imageSrcSet: imageSrcSetType;
-  isNew: boolean;
-  btnOnClick?: () => void;
-}
-
-type imageSrcSetType = {
-  mobile: string;
-  tablet: string;
-  desktop: string;
-};
-
-export const ProductCard = ({
+export const DetailsProductCard = ({
   reverse,
+  description,
   imageSrcSet,
   isNew,
   productName,
-  description,
   btnOnClick,
 }: IProductCard) => {
   return (
     <div
-      className={`flex gap-x-20 flex-col lg:flex-row ${EQUAL_SPACING} ${
+      className={`flex gap-x-40 flex-col lg:flex-row mx-10 md:mx-0 ${EQUAL_SPACING} ${
         reverse && "lg:flex-row-reverse"
       }`}
     >
@@ -42,8 +28,8 @@ export const ProductCard = ({
             New Product
           </p>
         )}
-        <p className="text-3xl lg:text-6xl">{productName}</p>
-        <p className="text-center lg:text-left opacity-75 py-6 lg:w-2/3 w-1/2">
+        <p className="text-xl lg:text-3xl">{productName}</p>
+        <p className="text-center lg:text-left opacity-75 py-6 w-full ">
           {description}
         </p>
 
