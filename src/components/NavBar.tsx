@@ -3,8 +3,8 @@ import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
 import Earphones from "../../../src/images/shared/desktop/image-earphones.png";
 import Headphones from "../../../src/images/shared/desktop/image-headphones.png";
 import Speakers from "../../../src/images/shared/desktop/image-speakers.png";
-import { TailwindShoppingCartSVG } from "../../images/cart/tailwind-cart";
-import { HomePageBodyCard } from "../../pages/HomePage";
+import { TailwindShoppingCartSVG } from "../images/cart/tailwind-cart";
+import { HomePageBodyCard } from "../pages/HomePage";
 
 // type routes = "" | "headphones" | "speakers" | "earphones";
 

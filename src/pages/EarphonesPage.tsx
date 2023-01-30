@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HomePageProductCard } from "../components/product/HomeProductCard";
 import { BottomSection, Footer, HomePageBody } from "./HomePage";
 
@@ -8,6 +8,8 @@ import EarphoneTablet from "../../src/images/category-earphones/tablet/image-yx1
 import { EQUAL_SPACING } from "../utils";
 
 export const Earphones = () => {
+  useEffect(() => {}, []);
+
   return (
     <section>
       <div className="bg-black">

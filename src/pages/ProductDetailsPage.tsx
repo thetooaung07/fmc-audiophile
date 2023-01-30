@@ -1,77 +1,106 @@
-import { useNavigate } from "react-router-dom";
-import { imageSrcSetType } from "../common/models";
+import { useEffect, useState } from "react";
+import { render } from "react-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { imageSrcSetType, Product } from "../common/models";
+import { PrimaryButton } from "../components/Buttons";
+import { LoadingIndicator } from "../components/LoadingIndicator";
 import { DetailsProductCard } from "../components/product/DetailsProductCard";
 import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
 import { BottomSection, Footer, HomePageBody, MidSection } from "./HomePage";
 
 export const ProductDetails = () => {
-  const { selectedProduct } = useProductContext();
-
+  const { category, name } = useParams();
+  const { selectedProduct, setSelectedProduct, products, setProducts } =
+    useProductContext();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Single Fetch
+
+    setIsLoading(true);
+    fetch("http://127.0.0.1:5173/src/product.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setSelectedProduct(
+          data.products.find((oj: { category: any; slug: any }) => {
+            return `${oj.category}/${oj.slug}` == `${category}/${name}`;
+          })
+        );
+      });
+
+    setIsLoading(false);
+  }, [category, name]);
+
   return (
-    <section className="md:container-center mx-5">
-      <div
-        className="opacity-60 py-8 cursor-pointer"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        Go Back
-      </div>
-      <DetailsProductCard
-        quantity={1}
-        price={selectedProduct?.price || 0}
-        reverse={false}
-        productName={selectedProduct?.name || ""}
-        description={selectedProduct?.description || ""}
-        imageSrcSet={{
-          mobile: selectedProduct?.categoryImage.mobile || "",
-          tablet: selectedProduct?.categoryImage.tablet || "",
-          desktop: selectedProduct?.categoryImage.desktop || "",
-        }}
-        isNew
-        btnOnClick={() => {}}
-      ></DetailsProductCard>
-
-      {/* Features and In the Box */}
-      <div
-        className={`flex ${EQUAL_SPACING} justify-between items-start gap-x-20 flex-col lg:flex-row`}
-      >
-        <div className="Features w-full lg:w-2/3 mr-24">
-          <h2 className="uppercase text-3xl font-bold py-8">Features</h2>
-          <p className="opacity-70 pb-4">
-            {selectedProduct?.features.split("\n\n")[0]}
-          </p>
-          <p className="opacity-70 pb-4">
-            {selectedProduct?.features.split("\n\n")[1]}
-          </p>
-        </div>
-
-        <div className="In-The-Box w-full lg:w-1/3 flex flex-row items-start gap-16 lg:gap-0 lg:flex-col">
-          <h1 className="uppercase text-3xl font-bold py-8">In The Box</h1>
-          <div className="py-8 lg:py-0">
-            {selectedProduct?.includedItems.map((e, index) => (
-              <InTheBoxItem
-                count={e.quantity}
-                item={e.item}
-                key={index}
-              ></InTheBoxItem>
-            ))}
+    <>
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <section className="md:container-center mx-5">
+          <div
+            className="flex opacity-60 my-4 py-2 cursor-pointer max-w-fit max-h-fit  hover:opacity-100"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <p> Go Back </p>
           </div>
-        </div>
-      </div>
-
-      <GridGallery></GridGallery>
-      <YouMayAlsoLike></YouMayAlsoLike>
-      {/* <HomePageBody></HomePageBody> */}
-      <BottomSection></BottomSection>
-    </section>
+          <DetailsProductCard
+            quantity={1}
+            price={selectedProduct?.price || 0}
+            reverse={false}
+            productName={selectedProduct?.name || ""}
+            description={selectedProduct?.description || ""}
+            imageSrcSet={{
+              mobile: selectedProduct?.categoryImage.mobile || "",
+              tablet: selectedProduct?.categoryImage.tablet || "",
+              desktop: selectedProduct?.categoryImage.desktop || "",
+            }}
+            isNew
+            btnOnClick={() => {}}
+          ></DetailsProductCard>
+          {/* Features and In the Box */}
+          <div
+            className={`flex ${EQUAL_SPACING} justify-between items-start gap-x-20 flex-col lg:flex-row`}
+          >
+            <div className="Features w-full lg:w-2/3 mr-24">
+              <h2 className="uppercase text-3xl font-bold py-8">Features</h2>
+              <p className="opacity-70 pb-4">
+                {selectedProduct?.features.split("\n\n")[0]}
+              </p>
+              <p className="opacity-70 pb-4">
+                {selectedProduct?.features.split("\n\n")[1]}
+              </p>
+            </div>
+            <div className="In-The-Box w-full lg:w-1/3 flex flex-row items-start gap-16 lg:gap-0 lg:flex-col">
+              <h1 className="uppercase text-3xl font-bold py-8">In The Box</h1>
+              <div className="py-8 lg:py-0">
+                {selectedProduct?.includedItems.map((e, index) => (
+                  <InTheBoxItem
+                    count={e.quantity}
+                    item={e.item}
+                    key={index}
+                  ></InTheBoxItem>
+                ))}
+              </div>
+            </div>
+          </div>
+          <GridGallery></GridGallery>
+          <YouMayAlsoLike></YouMayAlsoLike>
+          {/* <HomePageBody></HomePageBody> */}
+          <BottomSection></BottomSection>
+        </section>
+      )}
+    </>
   );
 };
 
 export const YouMayAlsoLike = () => {
   const { selectedProduct } = useProductContext();
+
+  const navigate = useNavigate();
   return (
     <section className={`mt-24 flex justify-center items-center flex-col`}>
       <h2 className="text-4xl font-bold text-center">You May Also Like</h2>
@@ -94,9 +123,12 @@ export const YouMayAlsoLike = () => {
               pictureClassName=""
             />
             <h2 className="text-2xl font-bold py-4">{e.name}</h2>
-            <button className="secondary-btn-inverse bg-buttonOrange uppercase">
-              See Product
-            </button>
+            <PrimaryButton
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                navigate(`/${e.slug}`);
+              }}
+            ></PrimaryButton>
           </div>
         ))}
       </div>

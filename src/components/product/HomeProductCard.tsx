@@ -1,4 +1,3 @@
-import React from "react";
 import { IProductCard } from "../../common/models";
 import { EQUAL_SPACING } from "../../utils";
 import { PrimaryButton } from "../Buttons";
@@ -34,11 +33,7 @@ export const HomePageProductCard = ({
           {description}
         </p>
 
-        <PrimaryButton
-          onClick={() => {
-            console.log("Hello");
-          }}
-        ></PrimaryButton>
+        <PrimaryButton onClick={btnOnClick}></PrimaryButton>
       </div>
     </div>
   );

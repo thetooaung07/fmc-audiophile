@@ -4,7 +4,7 @@ export interface IProductCard {
   description: string;
   imageSrcSet: imageSrcSetType;
   isNew: boolean;
-  btnOnClick?: () => void;
+  btnOnClick: () => void;
 }
 
 export interface IProductDetailsCard {
@@ -13,7 +13,7 @@ export interface IProductDetailsCard {
   description: string;
   imageSrcSet: imageSrcSetType;
   isNew: boolean;
-  btnOnClick?: () => void;
+  btnOnClick: () => void;
   quantity: number;
   price: number;
 }

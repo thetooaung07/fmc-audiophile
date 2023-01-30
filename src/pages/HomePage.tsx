@@ -26,6 +26,7 @@ import SpeakerZx9desktop from "../../src/images/home/desktop/image-speaker-zx9.p
 import SpeakerZx9mobile from "../../src/images/home/mobile/image-speaker-zx9.png";
 import SpeakerZx9tablet from "../../src/images/home/tablet/image-speaker-zx9.png";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
+import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
 
 export const HomePage = () => {
@@ -44,6 +45,7 @@ export const HomePage = () => {
 
 export const MainSection = () => {
   const navigate = useNavigate();
+  const { products } = useProductContext();
 
   return (
     <section className="bg-black">
@@ -60,7 +62,11 @@ export const MainSection = () => {
             made for the passionate music enthusiast.
           </p>
 
-          <PrimaryButton onClick={() => {}}></PrimaryButton>
+          <PrimaryButton
+            onClick={() => {
+              navigate(`/${products![0].category}/${products![0].slug}`);
+            }}
+          ></PrimaryButton>
         </div>
         <picture className="">
           <source srcSet={HeroImageMobile} media="(max-width: 640px)" />

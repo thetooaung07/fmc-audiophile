@@ -35,9 +35,9 @@ export const DetailsProductCard = ({
 
         <h1 className="mb-4 text-2xl">${price}</h1>
 
-        <div className="flex">
+        <div className="flex gap-4">
           <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
-          <PrimaryButton onClick={() => {}}></PrimaryButton>
+          <PrimaryButton label="Add Product" onClick={() => {}}></PrimaryButton>
         </div>
       </div>
     </div>
