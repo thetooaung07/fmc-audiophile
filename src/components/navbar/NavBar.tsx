@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Routes, useLocation } from "react-router-dom";
+import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
 import Earphones from "../../../src/images/shared/desktop/image-earphones.png";
 import Headphones from "../../../src/images/shared/desktop/image-headphones.png";
 import Speakers from "../../../src/images/shared/desktop/image-speakers.png";
@@ -47,7 +47,7 @@ export const NavBar = () => {
         </div>
       </div>
 
-      <nav className="mx-4 xl:container-center md:mx-auto">
+      <nav className="mx-4 xl:container-center">
         <div
           className="flex justify-between items-center py-4 lg:py-8"
           style={{ borderBottom: "0.5px solid rgba(255, 255, 255, 0.2)" }}
@@ -62,7 +62,13 @@ export const NavBar = () => {
               <span className="hamburger-bottom"></span>
             </button>
           </div>
-          <header className="text-3xl">audiophile</header>
+          <Link
+            to={"/"}
+            className="text-3xl cursor-pointer select-none"
+            onClick={() => handleActive("/")}
+          >
+            audiophile
+          </Link>
 
           <div className="hidden md:flex justify-between space-x-12">
             <Link

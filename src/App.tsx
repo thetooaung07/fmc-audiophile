@@ -18,11 +18,11 @@ function App() {
   const [cartProduct, setCartProudct] = useState<Product[]>([]);
   const location = useLocation();
   useEffect(() => {
-    fetch("./src/product.json")
+    fetch("http://127.0.0.1:5173/src/product.json")
       .then((res) => res.json())
       .then((data) => {
         setApiData(data.products);
-        setSelectedCartProduct(data.products[0]);
+        setSelectedCartProduct(data.products[3]);
 
         setCartProudct([data.products[0], data.products[1]]);
       });
@@ -46,10 +46,7 @@ function App() {
           <Route path="/headphones" element={<Headphones />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/earphones" element={<Earphones />} />
-          <Route
-            path="/:productCategory/details/:productName"
-            element={<ProductDetails />}
-          />
+          <Route path="/:category/:name" element={<ProductDetails />} />
 
           <Route path="*" element={<UnknownRoute></UnknownRoute>} />
         </Routes>

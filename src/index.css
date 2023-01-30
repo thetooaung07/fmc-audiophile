@@ -16,10 +16,10 @@ html {
     @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
 
-  .trans-hover {
-    @apply px-5 py-3 bg-transparent border border-black text-black tracking-wide uppercase hover:bg-[#000000] hover:text-white hover:transition;
+  .secondary-btn {
+    @apply bg-transparent border border-black text-black  hover:bg-[#000000] hover:text-white hover:transition;
   }
-  .trans-hover-inverse {
-    @apply px-5 py-3 bg-black border border-black text-white tracking-wide uppercase hover:bg-transparent  hover:text-black hover:transition;
+  .secondary-btn-inverse {
+    @apply bg-black border border-black text-white  hover:bg-transparent  hover:text-black hover:transition;
   }
 }

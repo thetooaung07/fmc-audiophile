@@ -1,6 +1,7 @@
 import React from "react";
 import { IProductCard } from "../../common/models";
 import { EQUAL_SPACING } from "../../utils";
+import { PrimaryButton } from "../Buttons";
 
 export const HomePageProductCard = ({
   reverse,
@@ -33,16 +34,11 @@ export const HomePageProductCard = ({
           {description}
         </p>
 
-        <div className="">
-          <button
-            className="trans-hover bg-buttonOrange"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            See Product
-          </button>
-        </div>
+        <PrimaryButton
+          onClick={() => {
+            console.log("Hello");
+          }}
+        ></PrimaryButton>
       </div>
     </div>
   );

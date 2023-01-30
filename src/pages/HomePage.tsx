@@ -25,6 +25,7 @@ import SpeakerZx7tablet from "../../src/images/home/tablet/image-speaker-zx7.jpg
 import SpeakerZx9desktop from "../../src/images/home/desktop/image-speaker-zx9.png";
 import SpeakerZx9mobile from "../../src/images/home/mobile/image-speaker-zx9.png";
 import SpeakerZx9tablet from "../../src/images/home/tablet/image-speaker-zx9.png";
+import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import { EQUAL_SPACING } from "../utils";
 
 export const HomePage = () => {
@@ -59,17 +60,7 @@ export const MainSection = () => {
             made for the passionate music enthusiast.
           </p>
 
-          <div className="px-5 py-3 text-white bg-buttonOrange border-none">
-            <button
-              className=""
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/speakers/details/abcd");
-              }}
-            >
-              See Product
-            </button>
-          </div>
+          <PrimaryButton onClick={() => {}}></PrimaryButton>
         </div>
         <picture className="">
           <source srcSet={HeroImageMobile} media="(max-width: 640px)" />
@@ -152,16 +143,7 @@ export const MidSection = () => {
             made for the passionate music enthusiast.
           </p>
 
-          <div className="">
-            <button
-              className="trans-hover-inverse"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              See Product
-            </button>
-          </div>
+          <SecondaryButton inverse onClick={() => {}}></SecondaryButton>
         </div>
       </div>
 
@@ -169,16 +151,7 @@ export const MidSection = () => {
       <div className="relative my-4 rounded-xl overflow-hidden">
         <div className="absolute top-1/2 transform -translate-y-1/2 left-6">
           <h1 className="text-3xl lg:text-6xl py-4">ZX7 Speaker</h1>
-          <div className="">
-            <button
-              className="trans-hover"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              See Product
-            </button>
-          </div>
+          <SecondaryButton onClick={() => {}}></SecondaryButton>
         </div>
         <picture className="rounded-lg overflow-hidden">
           <source srcSet={SpeakerZx7mobile} media="(max-width: 640px)" />
@@ -200,17 +173,8 @@ export const MidSection = () => {
         </picture>
 
         <div className="w-full px-5 lg:px-10 bg-[#F1F1F1] rounded-xl flex flex-col justify-center py-12 lg:items-start items-center">
-          <h1 className="text-2xl lg:text-6xl">YX1 EARPHONES</h1>
-          <div className="mt-6">
-            <button
-              className="trans-hover"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              See Product
-            </button>
-          </div>
+          <h1 className="text-2xl lg:text-6xl mb-6">YX1 EARPHONES</h1>
+          <SecondaryButton onClick={() => {}}></SecondaryButton>
         </div>
       </div>
     </div>

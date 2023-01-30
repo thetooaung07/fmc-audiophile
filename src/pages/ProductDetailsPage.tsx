@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { imageSrcSetType } from "../common/models";
 import { DetailsProductCard } from "../components/product/DetailsProductCard";
 import { useProductContext } from "../context";
@@ -9,7 +7,6 @@ import { BottomSection, Footer, HomePageBody, MidSection } from "./HomePage";
 
 export const ProductDetails = () => {
   const { selectedProduct } = useProductContext();
-  console.log(selectedProduct?.features.split("\n\n"));
 
   const navigate = useNavigate();
   return (
@@ -51,21 +48,23 @@ export const ProductDetails = () => {
           </p>
         </div>
 
-        <div className="In-The-Box w-full lg:w-1/3">
+        <div className="In-The-Box w-full lg:w-1/3 flex flex-row items-start gap-16 lg:gap-0 lg:flex-col">
           <h1 className="uppercase text-3xl font-bold py-8">In The Box</h1>
-          {selectedProduct?.includedItems.map((e, index) => (
-            <InTheBoxItem
-              count={e.quantity}
-              item={e.item}
-              key={index}
-            ></InTheBoxItem>
-          ))}
+          <div className="py-8 lg:py-0">
+            {selectedProduct?.includedItems.map((e, index) => (
+              <InTheBoxItem
+                count={e.quantity}
+                item={e.item}
+                key={index}
+              ></InTheBoxItem>
+            ))}
+          </div>
         </div>
       </div>
 
       <GridGallery></GridGallery>
       <YouMayAlsoLike></YouMayAlsoLike>
-      <HomePageBody></HomePageBody>
+      {/* <HomePageBody></HomePageBody> */}
       <BottomSection></BottomSection>
     </section>
   );
@@ -74,9 +73,7 @@ export const ProductDetails = () => {
 export const YouMayAlsoLike = () => {
   const { selectedProduct } = useProductContext();
   return (
-    <section
-      className={`md:h-max md:mt-20 lg:h-[80vh] flex justify-center items-center flex-col`}
-    >
+    <section className={`mt-24 flex justify-center items-center flex-col`}>
       <h2 className="text-4xl font-bold text-center">You May Also Like</h2>
 
       <div
@@ -97,7 +94,7 @@ export const YouMayAlsoLike = () => {
               pictureClassName=""
             />
             <h2 className="text-2xl font-bold py-4">{e.name}</h2>
-            <button className="trans-hover-inverse bg-buttonOrange uppercase">
+            <button className="secondary-btn-inverse bg-buttonOrange uppercase">
               See Product
             </button>
           </div>

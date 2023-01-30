@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IProductCard, IProductDetailsCard } from "../../common/models";
-import { EQUAL_SPACING } from "../../utils";
+import { PrimaryButton } from "../Buttons";
 
 export const DetailsProductCard = ({
   reverse,
@@ -37,14 +37,7 @@ export const DetailsProductCard = ({
 
         <div className="flex">
           <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
-          <button
-            className="trans-hover bg-buttonOrange text-white border-transparent ml-8"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            Add Product
-          </button>
+          <PrimaryButton onClick={() => {}}></PrimaryButton>
         </div>
       </div>
     </div>
@@ -60,16 +53,16 @@ export const PlusMinusBtn = ({ quantity = 1 }: PlusMinusBtnType) => {
   return (
     <div className="flex">
       <div
-        className="w-16 h-14 flex justify-center items-center text-black  bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        className="w-16  flex justify-center items-center text-black  bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
         onClick={() => setCount(count - 1)}
       >
         -
       </div>
-      <div className="w-12 h-14 flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg font-bold">
+      <div className="w-12  flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg font-bold">
         {count}
       </div>
       <div
-        className="w-16 h-14 flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        className="w-16  flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
         onClick={() => setCount(count + 1)}
       >
         +
