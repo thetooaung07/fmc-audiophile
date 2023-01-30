@@ -20,7 +20,7 @@ export const ProductDetails = () => {
     // Single Fetch
 
     setIsLoading(true);
-    fetch("http://127.0.0.1:5173/src/product.json")
+    fetch("/product.json")
       .then((res) => res.json())
       .then((data) => {
         setSelectedProduct(
