@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
-import Earphones from "../../../src/images/shared/desktop/image-earphones.png";
-import Headphones from "../../../src/images/shared/desktop/image-headphones.png";
-import Speakers from "../../../src/images/shared/desktop/image-speakers.png";
-import { TailwindShoppingCartSVG } from "../images/cart/tailwind-cart";
 import { HomePageBodyCard } from "../pages/HomePage";
+import { TailwindShoppingCartSVG } from "./tailwind-cart";
+import Earphones from "/images/shared/desktop/image-earphones.png";
+import Headphones from "/images/shared/desktop/image-headphones.png";
+import Speakers from "/images/shared/desktop/image-speakers.png";
 
 // type routes = "" | "headphones" | "speakers" | "earphones";
 
@@ -21,30 +21,43 @@ export const NavBar = () => {
     setIsActive(routeName);
   }
 
-  function openMenu() {
+  function toggleMenu() {
     setIsOpen(!isOpen);
   }
 
   return (
-    <div className="bg-black text-white">
-      <div>
-        <div className="">
-          {/* <HomePageBodyCard
-            title="Headphones"
-            imageUrl={Headphones}
-            goToUrl="/headphones"
-          ></HomePageBodyCard>
-          <HomePageBodyCard
-            title="Speakers"
-            imageUrl={Speakers}
-            goToUrl="/speakers"
-          ></HomePageBodyCard>
-          <HomePageBodyCard
-            title="Earphones"
-            imageUrl={Earphones}
-            goToUrl="/earphones"
-          ></HomePageBodyCard> */}
-        </div>
+    <div className="bg-black text-white relative">
+      <div
+        onClick={() => toggleMenu()}
+        className={`w-screen h-screen bg-black top-0 left-0 right-0 bottom-0 opacity-70 z-10 fixed transition-all ${
+          isOpen ? "block" : "hidden"
+        }`}
+      />
+      <div
+        className={` absolute left-0 right-0 top-16 bg-white pt-20 sm:px-10 z-20 ${
+          isOpen
+            ? "menu-slider grid grid-cols-1 sm:grid-cols-3 gap-x-4"
+            : "menu-close"
+        } lg:hidden`}
+      >
+        <HomePageBodyCard
+          styles=" sm:mx-4"
+          title="Headphones"
+          imageUrl={Headphones}
+          goToUrl="/headphones"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          styles="mt-5 sm:mt-0 sm:mx-4"
+          title="Speakers"
+          imageUrl={Speakers}
+          goToUrl="/speakers"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          styles="mt-5 sm:mt-0 sm:mx-4"
+          title="Earphones"
+          imageUrl={Earphones}
+          goToUrl="/earphones"
+        ></HomePageBodyCard>
       </div>
 
       <nav className="mx-4 xl:container-center">
@@ -55,7 +68,7 @@ export const NavBar = () => {
           <div className="block md:hidden">
             <button
               className={`${isOpen && "open"}  menu-btn w-6`}
-              onClick={openMenu}
+              onClick={toggleMenu}
             >
               <span className="hamburger-top"></span>
               <span className="hamburger-middle"></span>

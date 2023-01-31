@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Product } from "./common/models";
+import { LoadingIndicator } from "./components/LoadingIndicator";
 import { NavBar } from "./components/NavBar";
 import { ProductContext } from "./context";
 import { CategoryPage } from "./pages/CategoryPage";
@@ -14,13 +15,19 @@ function App() {
   const [selectedCardProduct, setSelectedCartProduct] =
     useState<Product | null>(null);
   const [cartProduct, setCartProudct] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("/product.json")
       .then((res) => res.json())
       .then((data) => {
         setApiData(data.products);
       });
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
   }, []);
 
   return (
@@ -34,19 +41,22 @@ function App() {
         setSelectedProduct: setSelectedCartProduct,
       }}
     >
-      <div className="h-max">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/headphones" element={<CategoryPage />} />
-          <Route path="/speakers" element={<CategoryPage />} />
-          <Route path="/earphones" element={<CategoryPage />} />
-          <Route path="/:category/:name" element={<ProductDetails />} />
-
-          <Route path="*" element={<UnknownRoute></UnknownRoute>} />
-        </Routes>
-        <Footer></Footer>
-      </div>
+      {isLoading ? (
+        <LoadingIndicator></LoadingIndicator>
+      ) : (
+        <div className="h-max">
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/headphones" element={<CategoryPage />} />
+            <Route path="/speakers" element={<CategoryPage />} />
+            <Route path="/earphones" element={<CategoryPage />} />
+            <Route path="/:category/:name" element={<ProductDetails />} />
+            <Route path="*" element={<UnknownRoute></UnknownRoute>} />
+          </Routes>
+          <Footer></Footer>
+        </div>
+      )}
     </ProductContext.Provider>
   );
 }

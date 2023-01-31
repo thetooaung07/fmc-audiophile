@@ -37,7 +37,15 @@ export const DetailsProductCard = ({
 
         <div className="flex gap-4">
           <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
-          <PrimaryButton label="Add Product" onClick={() => {}}></PrimaryButton>
+          <PrimaryButton
+            label="Add Product"
+            onClick={() => {
+              // open cart
+              // Add To Cart
+              // Show Product Count in Cart <Change Cart State>
+              // Notification
+            }}
+          ></PrimaryButton>
         </div>
       </div>
     </div>

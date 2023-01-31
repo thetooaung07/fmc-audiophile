@@ -46,17 +46,10 @@
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(-6px) translate(6px);
 }
-/*
-.open-slide {
+
+.menu-slider {
   animation: Slide_Down 1.1s ease;
 }
-
-.close-slide {
-  transform: translate(-100%);
-
-  animation: Slide_Up 1.1s ease;
-}
-
 @keyframes Slide_Down {
   0% {
     transform: translateY(-1000px);
@@ -65,13 +58,17 @@
     transform: translateY(0px);
   }
 }
+.menu-close {
+  display: none;
+}
 
+/* 
 @keyframes Slide_Up {
   0% {
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(-1000px);
+    transform: translateY(-100%);
   }
 } */
 

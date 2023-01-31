@@ -1,33 +1,33 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../App.css";
-import HeroImageDesktop from "../images/home/desktop/image-hero.jpg";
-import HeroImageMobile from "../images/home/mobile/image-hero.jpg";
-import HeroImageTablet from "../images/home/tablet/image-hero.jpg";
-import Earphones from "../images/shared/desktop/image-earphones.png";
-import Headphones from "../images/shared/desktop/image-headphones.png";
-import Speakers from "../images/shared/desktop/image-speakers.png";
-import FacebookIcon from "../images/shared/facebook.svg";
-import InstagramIcon from "../images/shared/instagram.svg";
-import TwitterIcon from "../images/shared/twitter.svg";
+import HeroImageDesktop from "/images/home/desktop/image-hero.jpg";
+import HeroImageMobile from "/images/home/mobile/image-hero.jpg";
+import HeroImageTablet from "/images/home/tablet/image-hero.jpg";
+import Earphones from "/images/shared/desktop/image-earphones.png";
+import Headphones from "/images/shared/desktop/image-headphones.png";
+import Speakers from "/images/shared/desktop/image-speakers.png";
+import FacebookIcon from "/images/shared/facebook.svg";
+import InstagramIcon from "/images/shared/instagram.svg";
+import TwitterIcon from "/images/shared/twitter.svg";
 
-import ImageBestGeardesktop from "../../src/images/shared/desktop/image-best-gear.jpg";
-import ImageBestGearmobile from "../../src/images/shared/mobile/image-best-gear.jpg";
-import ImageBestGeartablet from "../../src/images/shared/tablet/image-best-gear.jpg";
+import ImageBestGeardesktop from "/images/shared/desktop/image-best-gear.jpg";
+import ImageBestGearmobile from "/images/shared/mobile/image-best-gear.jpg";
+import ImageBestGeartablet from "/images/shared/tablet/image-best-gear.jpg";
 
-import EarphoneYx1desktop from "../../src/images/home/desktop/image-earphones-yx1.jpg";
-import EarphoneYx1mobile from "../../src/images/home/mobile/image-earphones-yx1.jpg";
-import EarphoneYx1tablet from "../../src/images/home/tablet/image-earphones-yx1.jpg";
+import EarphoneYx1desktop from "/images/home/desktop/image-earphones-yx1.jpg";
+import EarphoneYx1mobile from "/images/home/mobile/image-earphones-yx1.jpg";
+import EarphoneYx1tablet from "/images/home/tablet/image-earphones-yx1.jpg";
 
-import SpeakerZx7desktop from "../../src/images/home/desktop/image-speaker-zx7.jpg";
-import SpeakerZx7mobile from "../../src/images/home/mobile/image-speaker-zx7.jpg";
-import SpeakerZx7tablet from "../../src/images/home/tablet/image-speaker-zx7.jpg";
+import SpeakerZx7desktop from "/images/home/desktop/image-speaker-zx7.jpg";
+import SpeakerZx7mobile from "/images/home/mobile/image-speaker-zx7.jpg";
+import SpeakerZx7tablet from "/images/home/tablet/image-speaker-zx7.jpg";
 
-import SpeakerZx9desktop from "../../src/images/home/desktop/image-speaker-zx9.png";
-import SpeakerZx9mobile from "../../src/images/home/mobile/image-speaker-zx9.png";
-import SpeakerZx9tablet from "../../src/images/home/tablet/image-speaker-zx9.png";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
+import SpeakerZx9desktop from "/images/home/desktop/image-speaker-zx9.png";
+import SpeakerZx9mobile from "/images/home/mobile/image-speaker-zx9.png";
+import SpeakerZx9tablet from "/images/home/tablet/image-speaker-zx9.png";
 
 export const HomePage = () => {
   return (
@@ -106,15 +106,19 @@ type HomePageBodyCard = {
   imageUrl: string;
   title: string;
   goToUrl: string;
+  styles?: string;
 };
 
 export const HomePageBodyCard = ({
   imageUrl,
   title,
   goToUrl,
+  styles,
 }: HomePageBodyCard) => {
   return (
-    <div className="bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-10 rounded-xl flex flex-col justify-between items-center md:flex-1">
+    <div
+      className={`bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-14 rounded-xl flex flex-col justify-between items-center md:flex-1 text-black ${styles}`}
+    >
       <img src={imageUrl} alt="" className="w-36 h-32 -mt-10" />
       <div>
         <p className="">{title}</p>
