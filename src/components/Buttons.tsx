@@ -7,11 +7,12 @@ export const PrimaryButton = ({
   buttonStyle,
 }: ButtonType) => {
   return (
-    <div className="px-8 py-3 border-none text-white bg-buttonOrange  hover:bg-accentLight hover:transition font-medium">
-      <button className={`${buttonStyle} uppercase`} onClick={onClick}>
-        {label}
-      </button>
-    </div>
+    <button
+      className={`px-8 py-3 border-none text-white bg-buttonOrange  hover:bg-accentLight hover:transition font-medium ${buttonStyle} uppercase`}
+      onClick={onClick}
+    >
+      {label}
+    </button>
   );
 };
 
@@ -22,15 +23,14 @@ export const SecondaryButton = ({
   inverse = false,
 }: ButtonType) => {
   return (
-    <div
+    <button
       className={`px-8 py-3 font-medium w-max ${
         inverse ? "secondary-btn-inverse" : "secondary-btn"
-      }`}
+      } ${buttonStyle} uppercase`}
+      onClick={onClick}
     >
-      <button className={`${buttonStyle} uppercase`} onClick={onClick}>
-        {label}
-      </button>
-    </div>
+      {label}
+    </button>
   );
 };
 
