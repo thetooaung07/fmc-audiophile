@@ -27,6 +27,8 @@ import SpeakerZx9desktop from "/images/home/desktop/image-speaker-zx9.png";
 import SpeakerZx9mobile from "/images/home/mobile/image-speaker-zx9.png";
 import SpeakerZx9tablet from "/images/home/tablet/image-speaker-zx9.png";
 
+import { motion } from "framer-motion";
+
 export const HomePage = () => {
   return (
     <>
@@ -47,24 +49,29 @@ export const MainSection = () => {
   return (
     <section className="bg-black">
       <div className=" md:mx-auto md:container-center relative">
-        <div className="absolute absolute-center md:left-0 w-full lg:w-2/3 lg:max-w-lg text-white flex flex-col justify-between items-center lg:items-start md:translate-x-0 lg:container-center">
-          <p className="opacity-60" style={{ letterSpacing: 10 }}>
-            New Product
-          </p>
-          <p className="text-5xl text-center lg:text-left font-bold tracking-wider lg:text6xl mb-5 mt-6">
-            XX99 MARK II HEADPHONES
-          </p>
-          <p className="text-center lg:text-left py-4 w-2/3 mb-4 opacity-60">
-            Experience natural, lifelike audio and exceptional build quality
-            made for the passionate music enthusiast.
-          </p>
-
-          <PrimaryButton
-            onClick={() => {
-              navigate(`/headphones/xx99-mark-two-headphones`);
-            }}
-          ></PrimaryButton>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="absolute absolute-center md:left-0 w-full lg:w-2/3 lg:max-w-lg text-white flex flex-col justify-between items-center lg:items-start md:translate-x-0 lg:container-center">
+            <p className="opacity-60" style={{ letterSpacing: 10 }}>
+              New Product
+            </p>
+            <p className="text-5xl text-center lg:text-left font-bold tracking-wider lg:text6xl mb-5 mt-6">
+              XX99 MARK II HEADPHONES
+            </p>
+            <p className="text-center lg:text-left py-4 w-2/3 mb-4 opacity-60">
+              Experience natural, lifelike audio and exceptional build quality
+              made for the passionate music enthusiast.
+            </p>
+            <PrimaryButton
+              onClick={() => {
+                navigate(`/headphones/xx99-mark-two-headphones`);
+              }}
+            ></PrimaryButton>
+          </div>
+        </motion.div>
         <picture className="">
           <source srcSet={HeroImageMobile} media="(max-width: 640px)" />
           <source srcSet={HeroImageTablet} media="(max-width: 1024px)" />
@@ -75,27 +82,43 @@ export const MainSection = () => {
   );
 };
 
+const cardVariants = {
+  initial: { y: "4rem", opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { staggerChildren: 0.2, ease: "easeInOut", duration: 1 },
+  },
+};
+
 export const HomePageBody = () => {
   return (
-    <section
-      className={`flex flex-col md:flex-row mt-24 gap-12 md:mx-auto ${EQUAL_SPACING} mb-10`}
+    <motion.div
+      variants={cardVariants}
+      whileInView="animate"
+      initial="initial"
+      viewport={{ once: true }}
     >
-      <HomePageBodyCard
-        title="Headphones"
-        imageUrl={Headphones}
-        goToUrl="/headphones"
-      ></HomePageBodyCard>
-      <HomePageBodyCard
-        title="Speakers"
-        imageUrl={Speakers}
-        goToUrl="/speakers"
-      ></HomePageBodyCard>
-      <HomePageBodyCard
-        title="Earphones"
-        imageUrl={Earphones}
-        goToUrl="/earphones"
-      ></HomePageBodyCard>
-    </section>
+      <section
+        className={`flex flex-col md:flex-row mt-24 gap-12 md:mx-auto ${EQUAL_SPACING} mb-10`}
+      >
+        <HomePageBodyCard
+          title="Headphones"
+          imageUrl={Headphones}
+          goToUrl="/headphones"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          title="Speakers"
+          imageUrl={Speakers}
+          goToUrl="/speakers"
+        ></HomePageBodyCard>
+        <HomePageBodyCard
+          title="Earphones"
+          imageUrl={Earphones}
+          goToUrl="/earphones"
+        ></HomePageBodyCard>
+      </section>
+    </motion.div>
   );
 };
 
@@ -107,7 +130,8 @@ export const HomePageBodyCard = ({
   callBackOnClick,
 }: HomePageBodyCardType) => {
   return (
-    <div
+    <motion.div
+      variants={cardVariants}
       className={`bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-14 rounded-xl flex flex-col justify-between items-center md:flex-1 text-black  ${styles}`}
     >
       <img src={imageUrl} alt="" className="w-36 h-32 -mt-10" />
@@ -122,7 +146,7 @@ export const HomePageBodyCard = ({
           <p className=""> &gt;</p>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
