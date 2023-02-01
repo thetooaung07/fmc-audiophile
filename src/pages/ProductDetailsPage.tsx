@@ -33,9 +33,8 @@ export const ProductDetails = () => {
             return `${oj.category}/${oj.slug}` == `${category}/${name}`;
           })
         );
+        setIsLoading(false);
       });
-
-    setIsLoading(false);
   }, [category, name]);
 
   return (
@@ -45,42 +44,36 @@ export const ProductDetails = () => {
       ) : (
         <section className="md:container-center mx-5">
           <div
-            className="flex opacity-60 my-4 py-2 cursor-pointer max-w-fit max-h-fit  hover:opacity-100"
+            className="my-4 flex max-h-fit max-w-fit cursor-pointer py-2 opacity-60  hover:opacity-100"
             onClick={() => {
               navigate("/");
             }}
           >
             <p> Go Back </p>
           </div>
-          <DetailsProductCard
-            quantity={1}
-            price={selectedProduct?.price || 0}
-            reverse={false}
-            productName={selectedProduct?.name || ""}
-            description={selectedProduct?.description || ""}
-            imageSrcSet={{
-              mobile: selectedProduct?.categoryImage.mobile || "",
-              tablet: selectedProduct?.categoryImage.tablet || "",
-              desktop: selectedProduct?.categoryImage.desktop || "",
-            }}
-            isNew
-            btnOnClick={() => {}}
-          ></DetailsProductCard>
+          {selectedProduct !== null && (
+            <DetailsProductCard
+              product={selectedProduct!}
+              quantity={1}
+              reverse={false}
+              btnOnClick={() => {}}
+            ></DetailsProductCard>
+          )}
           {/* Features and In the Box */}
           <div
-            className={`flex ${EQUAL_SPACING} justify-between items-start gap-x-20 flex-col lg:flex-row`}
+            className={`flex ${EQUAL_SPACING} flex-col items-start justify-between gap-x-20 lg:flex-row`}
           >
-            <div className="Features w-full lg:w-2/3 mr-24">
-              <h2 className="uppercase text-3xl font-bold py-8">Features</h2>
-              <p className="opacity-70 pb-4">
+            <div className="Features mr-24 w-full lg:w-2/3">
+              <h2 className="py-8 text-3xl font-bold uppercase">Features</h2>
+              <p className="pb-4 opacity-70">
                 {selectedProduct?.features.split("\n\n")[0]}
               </p>
-              <p className="opacity-70 pb-4">
+              <p className="pb-4 opacity-70">
                 {selectedProduct?.features.split("\n\n")[1]}
               </p>
             </div>
-            <div className="In-The-Box w-full lg:w-1/3 flex flex-row items-start gap-16 lg:gap-0 lg:flex-col">
-              <h1 className="uppercase text-3xl font-bold py-8">In The Box</h1>
+            <div className="In-The-Box flex w-full flex-row items-start gap-16 lg:w-1/3 lg:flex-col lg:gap-0">
+              <h1 className="py-8 text-3xl font-bold uppercase">In The Box</h1>
               <div className="py-8 lg:py-0">
                 {selectedProduct?.includedItems.map((e, index) => (
                   <InTheBoxItem
@@ -107,15 +100,15 @@ export const YouMayAlsoLike = () => {
 
   const navigate = useNavigate();
   return (
-    <section className={`mt-24 flex justify-center items-center flex-col`}>
-      <h2 className="text-4xl font-bold text-center">You May Also Like</h2>
+    <section className={`mt-24 flex flex-col items-center justify-center`}>
+      <h2 className="text-center text-4xl font-bold">You May Also Like</h2>
 
       <div
-        className={`flex flex-col md:flex-row gap-12 md:mx-auto ${EQUAL_SPACING} mb-10 mt-10`}
+        className={`flex flex-col gap-12 md:mx-auto md:flex-row ${EQUAL_SPACING} mb-10 mt-10`}
       >
         {selectedProduct?.others.map((e, index) => (
           <div
-            className="flex flex-col justify-center items-center"
+            className="flex flex-col items-center justify-center"
             key={index}
           >
             <PictureComponent
@@ -127,7 +120,7 @@ export const YouMayAlsoLike = () => {
               imgClassName=""
               pictureClassName=""
             />
-            <h2 className="text-2xl font-bold py-4">{e.name}</h2>
+            <h2 className="py-4 text-2xl font-bold">{e.name}</h2>
             <PrimaryButton
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -143,8 +136,8 @@ export const YouMayAlsoLike = () => {
 
 export const InTheBoxItem = ({ count, item }: InTheBoxItemType) => {
   return (
-    <div className="flex pb-2 items-center">
-      <p className="text-buttonOrange font-bold text-lg">{count}x</p>
+    <div className="flex items-center pb-2">
+      <p className="text-lg font-bold text-buttonOrange">{count}x</p>
       <div className="w-5"></div>
       <p className="text-lg">{item}</p>
     </div>

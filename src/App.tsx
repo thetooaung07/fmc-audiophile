@@ -24,6 +24,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setApiData(data.products);
+        // setCartProudct([...data.products]);
       });
 
     setTimeout(() => {
@@ -63,3 +64,10 @@ function App() {
 }
 
 export default App;
+
+/// sync cart item with local storage
+/// Continue => same product > only increase quantity
+/// fly to cart animation
+/// details Card => already inside the cart ? "Open Cart" : "Add to product"
+/// chekout page
+///

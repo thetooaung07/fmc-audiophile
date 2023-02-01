@@ -1,47 +1,59 @@
 import React, { useState } from "react";
 import { IProductDetailsCard, PlusMinusBtnType } from "../../common/models";
+import { useProductContext } from "../../context";
 import { PrimaryButton } from "../Buttons";
 
 export const DetailsProductCard = ({
   reverse,
-  description,
-  imageSrcSet,
-  isNew,
-  productName,
+  product,
   btnOnClick,
-  price,
   quantity,
 }: IProductDetailsCard) => {
+  const { setCartProudct, cartProduct } = useProductContext();
   return (
     <div
-      className={`flex gap-x-40 flex-col lg:flex-row md:mx-0  ${
+      className={`flex flex-col gap-x-40 md:mx-0 lg:flex-row  ${
         reverse && "lg:flex-row-reverse"
       }`}
     >
       <picture className="flex-1">
-        <source srcSet={imageSrcSet.mobile} media="(max-width: 640px)" />
-        <source srcSet={imageSrcSet.tablet} media="(max-width: 1024px)" />
-        <img src={imageSrcSet.desktop} alt="" className="w-full h-full" />
+        <source
+          srcSet={product.categoryImage.mobile}
+          media="(max-width: 640px)"
+        />
+        <source
+          srcSet={product.categoryImage.tablet}
+          media="(max-width: 1024px)"
+        />
+        <img
+          src={product.categoryImage.desktop}
+          alt=""
+          className="h-full w-full"
+        />
       </picture>
 
-      <div className="flex-1 flex flex-col justify-center items-start text-black lg:mt-0 mt-10">
-        {isNew && (
-          <p className="opacity-60 pb-5" style={{ letterSpacing: 10 }}>
+      <div className="mt-10 flex flex-1 flex-col items-start justify-center text-black lg:mt-0">
+        {product.new && (
+          <p className="pb-5 opacity-60" style={{ letterSpacing: 10 }}>
             New Product
           </p>
         )}
-        <p className="text-3xl lg:text-4xl font-bold">{productName}</p>
-        <p className="text-left opacity-75 py-6 w-full ">{description}</p>
+        <p className="text-3xl font-bold lg:text-4xl">{product.name}</p>
+        <p className="w-full py-6 text-left opacity-75 ">
+          {product.description}
+        </p>
 
-        <h1 className="mb-4 text-2xl">${price}</h1>
+        <h1 className="mb-4 text-2xl">${product.price}</h1>
 
         <div className="flex gap-4">
           <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
           <PrimaryButton
             label="Add Product"
             onClick={() => {
+              setCartProudct([...cartProduct, product]);
+
               // open cart
-              // Add To Cart
+              // Add To Cart  // setCartProudct();
               // Show Product Count in Cart <Change Cart State>
               // Notification
             }}
@@ -52,21 +64,27 @@ export const DetailsProductCard = ({
   );
 };
 
-export const PlusMinusBtn = ({ quantity = 1 }: PlusMinusBtnType) => {
+export const PlusMinusBtn = ({
+  quantity = 1,
+  operatorStyles = "",
+  countStyle = "",
+}: PlusMinusBtnType) => {
   const [count, setCount] = useState(quantity);
   return (
     <div className="flex">
       <div
-        className="w-16  flex justify-center items-center text-black  bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        className={`flex w-16 cursor-pointer select-none items-center  justify-center rounded-lg bg-[#F1F1F1] text-xl text-black opacity-80 hover:bg-lightGray ${operatorStyles}`}
         onClick={() => setCount(count - 1)}
       >
         -
       </div>
-      <div className="w-12  flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg font-bold">
+      <div
+        className={`flex w-12 items-center justify-center rounded-lg bg-[#F1F1F1] font-bold text-black ${countStyle}`}
+      >
         {count}
       </div>
       <div
-        className="w-16  flex justify-center items-center text-black bg-[#F1F1F1] rounded-lg hover:bg-lightGray cursor-pointer select-none text-xl opacity-80"
+        className={`flex w-16 cursor-pointer select-none items-center  justify-center rounded-lg bg-[#F1F1F1] text-xl text-black opacity-80 hover:bg-lightGray ${operatorStyles}`}
         onClick={() => setCount(count + 1)}
       >
         +

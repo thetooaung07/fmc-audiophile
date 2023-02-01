@@ -14,6 +14,8 @@ export type ButtonType = {
 };
 export type PlusMinusBtnType = {
   quantity: number;
+  operatorStyles?: string;
+  countStyle?: string;
 };
 export type HomePageBodyCardType = {
   imageUrl: string;
@@ -35,13 +37,9 @@ export interface IPictureSourceComponent {
 
 export interface IProductDetailsCard {
   reverse: boolean;
-  productName: string;
-  description: string;
-  imageSrcSet: imageSrcSetType;
-  isNew: boolean;
+  product: Product;
   btnOnClick: () => void;
   quantity: number;
-  price: number;
 }
 
 export type imageSrcSetType = {

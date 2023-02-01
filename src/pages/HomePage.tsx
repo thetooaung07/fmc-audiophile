@@ -44,7 +44,6 @@ export const HomePage = () => {
 
 export const MainSection = () => {
   const navigate = useNavigate();
-  const { products } = useProductContext();
 
   return (
     <section className="bg-black">
@@ -100,9 +99,8 @@ export const HomePageBody = () => {
   return (
     <motion.div
       variants={staggerContainer}
-      whileInView="animate"
+      whileInView="show"
       initial="hidden"
-      animate="show"
       viewport={{ once: true }}
     >
       <section
@@ -156,90 +154,98 @@ export const HomePageBodyCard = ({
   );
 };
 
+const staggerContainerMidSection = {
+  hidden: { y: "4rem", opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { staggerChildren: 0.2, ease: "easeInOut", duration: 1 },
+  },
+};
+
 export const MidSection = () => {
   const navigate = useNavigate();
   return (
-    <section className={`mx-10 md:mx-auto`}>
-      <motion.div
-        initial="hidden"
-        whileInView="animate"
-        animate="show"
-        variants={staggerContainer}
-        viewport={{ once: true }}
-      >
-        <motion.div variants={staggerItem}>
-          <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
-            <picture className="">
-              <source srcSet={SpeakerZx9mobile} media="(max-width: 640px)" />
-              <source srcSet={SpeakerZx9tablet} media="(max-width: 1024px)" />
-              <img
-                src={SpeakerZx9desktop}
-                alt=""
-                className="w-1/2 h-1/2 mx-auto mt-4 lg:mt-20 lg:-mb-2"
-              />
-            </picture>
-            {/* Duplicate with Main section text */}
-            <div className="py-5 flex flex-col justify-center items-center lg:items-start text-white ">
-              <p className="text-3xl lg:text-6xl">ZX9 SPEAKER</p>
-              <p className="text-center lg:text-left opacity-75 py-6 lg:w-2/3 w-1/2">
-                Experience natural, lifelike audio and exceptional build quality
-                made for the passionate music enthusiast.
-              </p>
-              <SecondaryButton
-                inverse
-                onClick={() => {
-                  navigate("/speakers/zx9-speaker");
-                }}
-              ></SecondaryButton>
-            </div>
+    <motion.section
+      variants={staggerContainerMidSection}
+      whileInView="show"
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true }}
+      className={`mx-10 md:mx-auto`}
+    >
+      <motion.div variants={staggerContainerMidSection}>
+        <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
+          <picture className="">
+            <source srcSet={SpeakerZx9mobile} media="(max-width: 640px)" />
+            <source srcSet={SpeakerZx9tablet} media="(max-width: 1024px)" />
+            <img
+              src={SpeakerZx9desktop}
+              alt=""
+              className="w-1/2 h-1/2 mx-auto mt-4 lg:mt-20 lg:-mb-2"
+            />
+          </picture>
+          {/* Duplicate with Main section text */}
+          <div className="py-5 flex flex-col justify-center items-center lg:items-start text-white ">
+            <p className="text-3xl lg:text-6xl">ZX9 SPEAKER</p>
+            <p className="text-center lg:text-left opacity-75 py-6 lg:w-2/3 w-1/2">
+              Experience natural, lifelike audio and exceptional build quality
+              made for the passionate music enthusiast.
+            </p>
+            <SecondaryButton
+              inverse
+              onClick={() => {
+                navigate("/speakers/zx9-speaker");
+              }}
+            ></SecondaryButton>
           </div>
-        </motion.div>
-
-        {/* Second Section */}
-
-        <motion.div variants={staggerItem}>
-          <div className="relative my-4 rounded-xl overflow-hidden">
-            <div className="absolute top-1/2 transform -translate-y-1/2 left-6">
-              <h1 className="text-3xl lg:text-6xl py-4">ZX7 Speaker</h1>
-              <SecondaryButton
-                onClick={() => {
-                  navigate("/speakers/zx7-speaker");
-                }}
-              ></SecondaryButton>
-            </div>
-            <picture className="rounded-lg overflow-hidden">
-              <source srcSet={SpeakerZx7mobile} media="(max-width: 640px)" />
-              <source srcSet={SpeakerZx7tablet} media="(max-width: 1024px)" />
-              <img src={SpeakerZx7desktop} alt="" className="md:w-full" />
-            </picture>
-          </div>
-        </motion.div>
-
-        <motion.div variants={staggerItem}>
-          {/* Third Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl overflow-hidden">
-            <picture className="">
-              <source srcSet={EarphoneYx1mobile} media="(max-width: 640px)" />
-              <source srcSet={EarphoneYx1tablet} media="(max-width: 1024px)" />
-              <img
-                src={EarphoneYx1desktop}
-                alt=""
-                className="w-full h-60 rounded-xl lg:h-full"
-              />
-            </picture>
-
-            <div className="w-full px-5 lg:px-10 bg-[#F1F1F1] rounded-xl flex flex-col justify-center py-12 lg:items-start items-center">
-              <h1 className="text-2xl lg:text-6xl mb-6">YX1 EARPHONES</h1>
-              <SecondaryButton
-                onClick={() => {
-                  navigate("/earphones/yx1-earphones");
-                }}
-              ></SecondaryButton>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </motion.div>
-    </section>
+
+      {/* Second Section */}
+
+      <motion.div variants={staggerContainerMidSection}>
+        <div className="relative my-4 rounded-xl overflow-hidden">
+          <div className="absolute top-1/2 transform -translate-y-1/2 left-6">
+            <h1 className="text-3xl lg:text-6xl py-4">ZX7 Speaker</h1>
+            <SecondaryButton
+              onClick={() => {
+                navigate("/speakers/zx7-speaker");
+              }}
+            ></SecondaryButton>
+          </div>
+          <picture className="rounded-lg overflow-hidden">
+            <source srcSet={SpeakerZx7mobile} media="(max-width: 640px)" />
+            <source srcSet={SpeakerZx7tablet} media="(max-width: 1024px)" />
+            <img src={SpeakerZx7desktop} alt="" className="md:w-full" />
+          </picture>
+        </div>
+      </motion.div>
+
+      <motion.div variants={staggerContainerMidSection}>
+        {/* Third Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl overflow-hidden">
+          <picture className="">
+            <source srcSet={EarphoneYx1mobile} media="(max-width: 640px)" />
+            <source srcSet={EarphoneYx1tablet} media="(max-width: 1024px)" />
+            <img
+              src={EarphoneYx1desktop}
+              alt=""
+              className="w-full h-60 rounded-xl lg:h-full"
+            />
+          </picture>
+
+          <div className="w-full px-5 lg:px-10 bg-[#F1F1F1] rounded-xl flex flex-col justify-center py-12 lg:items-start items-center">
+            <h1 className="text-2xl lg:text-6xl mb-6">YX1 EARPHONES</h1>
+            <SecondaryButton
+              onClick={() => {
+                navigate("/earphones/yx1-earphones");
+              }}
+            ></SecondaryButton>
+          </div>
+        </div>
+      </motion.div>
+    </motion.section>
   );
 };
 

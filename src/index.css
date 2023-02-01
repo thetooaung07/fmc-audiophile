@@ -11,8 +11,8 @@ html {
   /* font-family: "Montserrat", sans-serif; Good for Body paragraph  */
   /* font-family: "Poppins", sans-serif; Good on big texts */
 
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
+  overflow-y: scroll;
+  overflow-x: hidden;
   /* scroll-behavior: smooth; */
 }
 
@@ -21,13 +21,13 @@ html {
     @apply container mx-auto md:w-2/3;
   }
   .absolute-center {
-    @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
   }
 
   .secondary-btn {
-    @apply bg-transparent border border-black text-black  hover:bg-[#000000] hover:text-white hover:transition;
+    @apply border border-black bg-transparent text-black  hover:bg-[#000000] hover:text-white hover:transition;
   }
   .secondary-btn-inverse {
-    @apply bg-black border border-black text-white  hover:bg-transparent  hover:text-black hover:transition;
+    @apply border border-black bg-black text-white  hover:bg-transparent  hover:text-black hover:transition;
   }
 }

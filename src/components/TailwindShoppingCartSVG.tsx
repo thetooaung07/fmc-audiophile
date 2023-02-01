@@ -1,6 +1,6 @@
-import React from "react";
-
-export const TailwindShoppingCartSVG = () => {
+export const TailwindShoppingCartSVG = ({
+  style = "h-6 w-6",
+}: TailwindShoppingCartSVGType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export const TailwindShoppingCartSVG = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className={`${style}`}
     >
       <path
         strokeLinecap="round"
@@ -18,3 +18,7 @@ export const TailwindShoppingCartSVG = () => {
     </svg>
   );
 };
+
+export interface TailwindShoppingCartSVGType {
+  style?: string;
+}
