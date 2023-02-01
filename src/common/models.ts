@@ -6,6 +6,32 @@ export interface IProductCard {
   isNew: boolean;
   btnOnClick: () => void;
 }
+export type ButtonType = {
+  onClick: () => void;
+  label?: string;
+  buttonStyle?: string;
+  inverse?: boolean;
+};
+export type PlusMinusBtnType = {
+  quantity: number;
+};
+export type HomePageBodyCardType = {
+  imageUrl: string;
+  title: string;
+  goToUrl: string;
+  callBackOnClick?: () => void;
+  styles?: string;
+};
+export type InTheBoxItemType = {
+  count: number;
+  item: string;
+};
+
+export interface IPictureSourceComponent {
+  imgClassName: string;
+  imageSrcSet: imageSrcSetType;
+  pictureClassName: string;
+}
 
 export interface IProductDetailsCard {
   reverse: boolean;

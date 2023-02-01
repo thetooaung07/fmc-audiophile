@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IProductCard, IProductDetailsCard } from "../../common/models";
+import { IProductDetailsCard, PlusMinusBtnType } from "../../common/models";
 import { PrimaryButton } from "../Buttons";
 
 export const DetailsProductCard = ({
@@ -50,10 +50,6 @@ export const DetailsProductCard = ({
       </div>
     </div>
   );
-};
-
-type PlusMinusBtnType = {
-  quantity: number;
 };
 
 export const PlusMinusBtn = ({ quantity = 1 }: PlusMinusBtnType) => {

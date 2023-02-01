@@ -11,9 +11,9 @@ html {
   /* font-family: "Montserrat", sans-serif; Good for Body paragraph  */
   /* font-family: "Poppins", sans-serif; Good on big texts */
 
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-behavior: sm;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
+  /* scroll-behavior: smooth; */
 }
 
 @layer components {

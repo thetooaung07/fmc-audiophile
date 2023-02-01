@@ -33,7 +33,12 @@ export const HomePageProductCard = ({
           {description}
         </p>
 
-        <PrimaryButton onClick={btnOnClick}></PrimaryButton>
+        <PrimaryButton
+          onClick={() => {
+            btnOnClick();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        ></PrimaryButton>
       </div>
     </div>
   );

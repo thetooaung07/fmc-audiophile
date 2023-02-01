@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { render } from "react-dom";
 import { useNavigate, useParams } from "react-router-dom";
-import { imageSrcSetType, Product } from "../common/models";
+import {
+  imageSrcSetType,
+  InTheBoxItemType,
+  IPictureSourceComponent,
+  Product,
+} from "../common/models";
 import { PrimaryButton } from "../components/Buttons";
 import { LoadingIndicator } from "../components/LoadingIndicator";
 import { DetailsProductCard } from "../components/product/DetailsProductCard";
 import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
-import { BottomSection, Footer, HomePageBody, MidSection } from "./HomePage";
+import { BottomSection, HomePageBody, MidSection } from "./HomePage";
 
 export const ProductDetails = () => {
   const { category, name } = useParams();
@@ -136,11 +141,6 @@ export const YouMayAlsoLike = () => {
   );
 };
 
-type InTheBoxItemType = {
-  count: number;
-  item: string;
-};
-
 export const InTheBoxItem = ({ count, item }: InTheBoxItemType) => {
   return (
     <div className="flex pb-2 items-center">
@@ -191,12 +191,6 @@ export const GridGallery = () => {
     </div>
   );
 };
-
-export interface IPictureSourceComponent {
-  imgClassName: string;
-  imageSrcSet: imageSrcSetType;
-  pictureClassName: string;
-}
 
 export const PictureComponent = ({
   pictureClassName,

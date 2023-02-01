@@ -4,7 +4,6 @@ import { Product } from "../common/models";
 import { LoadingIndicator } from "../components/LoadingIndicator";
 import { HomePageProductCard } from "../components/product/HomeProductCard";
 import { EQUAL_SPACING } from "../utils";
-import { BottomSection, HomePageBody } from "./HomePage";
 
 export const CategoryPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +14,7 @@ export const CategoryPage = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("product.json")
+    fetch("/product.json")
       .then((res) => res.json())
       .then((data) => {
         setCategoryProducts(
@@ -53,7 +52,6 @@ export const CategoryPage = () => {
                   }}
                   isNew={product.new}
                   btnOnClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
                     navigate(`/${product.category}/${product.slug}`);
                   }}
                 ></HomePageProductCard>
@@ -61,8 +59,8 @@ export const CategoryPage = () => {
               </div>
             ))}
             <div className={`h-20`}></div>
-            <HomePageBody></HomePageBody>
-            <BottomSection></BottomSection>
+            {/* <HomePageBody></HomePageBody>
+            <BottomSection></BottomSection> */}
           </div>
         </section>
       )}

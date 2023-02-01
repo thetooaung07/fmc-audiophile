@@ -1,11 +1,5 @@
 import React from "react";
-
-type ButtonType = {
-  onClick: () => void;
-  label?: string;
-  buttonStyle?: string;
-  inverse?: boolean;
-};
+import { ButtonType } from "../common/models";
 
 export const PrimaryButton = ({
   label = "See Product",

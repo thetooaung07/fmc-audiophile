@@ -6,8 +6,6 @@ import Earphones from "/images/shared/desktop/image-earphones.png";
 import Headphones from "/images/shared/desktop/image-headphones.png";
 import Speakers from "/images/shared/desktop/image-speakers.png";
 
-// type routes = "" | "headphones" | "speakers" | "earphones";
-
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -19,6 +17,7 @@ export const NavBar = () => {
 
   function handleActive(routeName: string) {
     setIsActive(routeName);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function toggleMenu() {
@@ -41,18 +40,21 @@ export const NavBar = () => {
         } lg:hidden`}
       >
         <HomePageBodyCard
+          callBackOnClick={() => setIsOpen(false)}
           styles=" sm:mx-4"
           title="Headphones"
           imageUrl={Headphones}
           goToUrl="/headphones"
         ></HomePageBodyCard>
         <HomePageBodyCard
+          callBackOnClick={() => setIsOpen(false)}
           styles="mt-5 sm:mt-0 sm:mx-4"
           title="Speakers"
           imageUrl={Speakers}
           goToUrl="/speakers"
         ></HomePageBodyCard>
         <HomePageBodyCard
+          callBackOnClick={() => setIsOpen(false)}
           styles="mt-5 sm:mt-0 sm:mx-4"
           title="Earphones"
           imageUrl={Earphones}

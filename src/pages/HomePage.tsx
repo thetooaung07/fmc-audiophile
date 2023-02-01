@@ -6,9 +6,6 @@ import HeroImageTablet from "/images/home/tablet/image-hero.jpg";
 import Earphones from "/images/shared/desktop/image-earphones.png";
 import Headphones from "/images/shared/desktop/image-headphones.png";
 import Speakers from "/images/shared/desktop/image-speakers.png";
-import FacebookIcon from "/images/shared/facebook.svg";
-import InstagramIcon from "/images/shared/instagram.svg";
-import TwitterIcon from "/images/shared/twitter.svg";
 
 import ImageBestGeardesktop from "/images/shared/desktop/image-best-gear.jpg";
 import ImageBestGearmobile from "/images/shared/mobile/image-best-gear.jpg";
@@ -22,6 +19,7 @@ import SpeakerZx7desktop from "/images/home/desktop/image-speaker-zx7.jpg";
 import SpeakerZx7mobile from "/images/home/mobile/image-speaker-zx7.jpg";
 import SpeakerZx7tablet from "/images/home/tablet/image-speaker-zx7.jpg";
 
+import { HomePageBodyCardType } from "../common/models";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
 import { useProductContext } from "../context";
 import { EQUAL_SPACING } from "../utils";
@@ -33,7 +31,6 @@ export const HomePage = () => {
   return (
     <>
       <MainSection></MainSection>
-
       <div className="md:container-center">
         <HomePageBody></HomePageBody>
         <MidSection></MidSection>
@@ -64,7 +61,7 @@ export const MainSection = () => {
 
           <PrimaryButton
             onClick={() => {
-              navigate(`/${products![0].category}/${products![0].slug}`);
+              navigate(`/headphones/xx99-mark-two-headphones`);
             }}
           ></PrimaryButton>
         </div>
@@ -102,27 +99,25 @@ export const HomePageBody = () => {
   );
 };
 
-type HomePageBodyCard = {
-  imageUrl: string;
-  title: string;
-  goToUrl: string;
-  styles?: string;
-};
-
 export const HomePageBodyCard = ({
   imageUrl,
   title,
   goToUrl,
   styles,
-}: HomePageBodyCard) => {
+  callBackOnClick,
+}: HomePageBodyCardType) => {
   return (
     <div
-      className={`bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-14 rounded-xl flex flex-col justify-between items-center md:flex-1 text-black ${styles}`}
+      className={`bg-[#F1F1F1] mx-16 md:mx-0 pb-5 mb-14 rounded-xl flex flex-col justify-between items-center md:flex-1 text-black  ${styles}`}
     >
       <img src={imageUrl} alt="" className="w-36 h-32 -mt-10" />
       <div>
         <p className="">{title}</p>
-        <Link to={goToUrl} className="flex justify-center">
+        <Link
+          to={goToUrl}
+          className="flex justify-center hover:text-buttonOrange cursor-pointer"
+          onClick={callBackOnClick}
+        >
           <p className="">Shop </p>
           <p className=""> &gt;</p>
         </Link>
@@ -132,6 +127,7 @@ export const HomePageBodyCard = ({
 };
 
 export const MidSection = () => {
+  const navigate = useNavigate();
   return (
     <div className={`mx-10  md:mx-auto`}>
       <div className="bg-pattern flex justify-center items-center flex-col lg:flex-row ">
@@ -153,7 +149,12 @@ export const MidSection = () => {
             made for the passionate music enthusiast.
           </p>
 
-          <SecondaryButton inverse onClick={() => {}}></SecondaryButton>
+          <SecondaryButton
+            inverse
+            onClick={() => {
+              navigate("/speakers/zx9-speaker");
+            }}
+          ></SecondaryButton>
         </div>
       </div>
 
@@ -161,7 +162,11 @@ export const MidSection = () => {
       <div className="relative my-4 rounded-xl overflow-hidden">
         <div className="absolute top-1/2 transform -translate-y-1/2 left-6">
           <h1 className="text-3xl lg:text-6xl py-4">ZX7 Speaker</h1>
-          <SecondaryButton onClick={() => {}}></SecondaryButton>
+          <SecondaryButton
+            onClick={() => {
+              navigate("/speakers/zx7-speaker");
+            }}
+          ></SecondaryButton>
         </div>
         <picture className="rounded-lg overflow-hidden">
           <source srcSet={SpeakerZx7mobile} media="(max-width: 640px)" />
@@ -184,7 +189,11 @@ export const MidSection = () => {
 
         <div className="w-full px-5 lg:px-10 bg-[#F1F1F1] rounded-xl flex flex-col justify-center py-12 lg:items-start items-center">
           <h1 className="text-2xl lg:text-6xl mb-6">YX1 EARPHONES</h1>
-          <SecondaryButton onClick={() => {}}></SecondaryButton>
+          <SecondaryButton
+            onClick={() => {
+              navigate("/earphones/yx1-earphones");
+            }}
+          ></SecondaryButton>
         </div>
       </div>
     </div>
@@ -221,84 +230,5 @@ export const BottomSection = () => {
         </p>
       </div>
     </div>
-  );
-};
-
-export const Footer = () => {
-  return (
-    <section className={`bg-black text-white pb-5 ${EQUAL_SPACING}`}>
-      <div className="mx-8 md:container-center">
-        <div className="text-center">
-          <div className="flex flex-col justify-center items-center relative pt-8 md:pt-0 md:flex-row md:justify-between md:items-center">
-            <div className="absolute w-32 h-2 top-0 bg-buttonOrange rounded-lg "></div>
-            <h3 className="font-bold text-3xl lg:text-4xl">audiophile</h3>
-
-            <div className="my-8 flex flex-col text-center gap-y-2 text-lg md:flex-row md:gap-x-10">
-              <Link
-                className="uppercase transition-opacity opacity-60 hover:opacity-100"
-                to={"/"}
-              >
-                Home
-              </Link>
-              <Link
-                className="uppercase transition-opacity opacity-60 hover:opacity-100"
-                to={"/headphones"}
-              >
-                headphones
-              </Link>
-              <Link
-                className="uppercase transition-opacity opacity-60 hover:opacity-100"
-                to={"/speakers"}
-              >
-                speakers
-              </Link>
-              <Link
-                className="uppercase transition-opacity opacity-60 hover:opacity-100"
-                to={"/earphones"}
-              >
-                earphones
-              </Link>
-            </div>
-          </div>
-
-          <p className="w-full opacity-60 text-center md:text-left lg:w-1/2">
-            Audiophile is an all in one stop to fulfill your audio needs. We're
-            a small team of music lovers and sound specialists who are devoted
-            to helping you get the most out of personal audio. Come and visit
-            our demo facility - we’re open 7 days a week.
-          </p>
-
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-            <div className="my-8 text-center opacity-60 md:text-left">
-              Copyright 2021. All Rights Reserved
-            </div>
-
-            <div className="flex justify-center gap-x-8">
-              <Link className="uppercase text-white" to={"/"}>
-                <img
-                  src={FacebookIcon}
-                  className="opacity-60 hover:opacity-100 "
-                  alt=""
-                />
-              </Link>
-              <Link className="uppercase" to={"/headphones"}>
-                <img
-                  src={TwitterIcon}
-                  alt=""
-                  className="opacity-60 hover:opacity-100"
-                />
-              </Link>
-              <Link className="uppercase" to={"/speakers"}>
-                <img
-                  src={InstagramIcon}
-                  alt=""
-                  className="opacity-60 hover:opacity-100"
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 };

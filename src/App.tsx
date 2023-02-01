@@ -6,7 +6,8 @@ import { LoadingIndicator } from "./components/LoadingIndicator";
 import { NavBar } from "./components/NavBar";
 import { ProductContext } from "./context";
 import { CategoryPage } from "./pages/CategoryPage";
-import { Footer, HomePage } from "./pages/HomePage";
+import { Footer } from "./pages/Footer";
+import { HomePage } from "./pages/HomePage";
 import { ProductDetails } from "./pages/ProductDetailsPage";
 import { UnknownRoute } from "./pages/UnknownRoute";
 
@@ -27,7 +28,7 @@ function App() {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 1000);
   }, []);
 
   return (

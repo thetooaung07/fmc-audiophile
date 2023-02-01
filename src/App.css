@@ -1,17 +1,10 @@
 .bg-pattern {
-  background: url(./images/home/desktop/pattern-circles.svg) no-repeat;
+  background: url(/images/home/desktop/pattern-circles.svg) no-repeat;
   border-radius: 0.5rem;
   background-size: cover;
   background-position: center;
   overflow: hidden;
   background-color: #d87d4a;
-}
-
-.mid-bg-2 {
-  background: url(./images/home/desktop/image-speaker-zx7.jpg);
-  border-radius: 1rem;
-  background-size: cover;
-  background-position: center;
 }
 
 .menu-btn {
@@ -48,7 +41,7 @@
 }
 
 .menu-slider {
-  animation: Slide_Down 1.1s ease;
+  animation: Slide_Down 0.75s ease;
 }
 @keyframes Slide_Down {
   0% {
