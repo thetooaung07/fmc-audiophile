@@ -123,7 +123,6 @@ export const YouMayAlsoLike = () => {
             <h2 className="py-4 text-2xl font-bold">{e.name}</h2>
             <PrimaryButton
               onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
                 navigate(`/${e.slug}`);
               }}
             ></PrimaryButton>

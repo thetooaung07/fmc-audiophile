@@ -9,9 +9,9 @@ module.exports = {
     //   // lg: "976px",
     //   // xl: "1440px",
     // },
-    fontFamily: {
-      manrope: ["Manrope", "sans-serif"],
-    },
+    // fontFamily: {
+    //   manrope: ["Manrope", "sans-serif"],
+    // },
     extend: {
       colors: {
         bg: "#fafafa",
@@ -28,7 +28,6 @@ module.exports = {
         inputBorder: "#CFCFCF",
         inputError: "#CD2C2C",
         buttonOrange: "rgba(216, 125, 74, 1)",
-        // buttonOrange: "#e65c00",
       },
     },
   },

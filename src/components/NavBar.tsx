@@ -20,6 +20,8 @@ export const NavBar = () => {
   const { cartItems, cartQuantity, removeAllFromCart, getItemQuantity } =
     useShoppingCartContext();
 
+  const { products } = useProductContext();
+
   useEffect(() => {
     handleActive(location.pathname);
   }, [location]);
@@ -185,7 +187,10 @@ export const NavBar = () => {
                 Remove All
               </p>
             </div>
-            {cartItems.map((cartItem) => {
+            {cartItems.map((el) => {
+              const cartItem = products.find((p) => p.id == el.id);
+              if (cartItem == null) return;
+
               return (
                 <div
                   className="my-4 flex items-center justify-between"
@@ -209,7 +214,7 @@ export const NavBar = () => {
                   <PlusMinusBtn
                     operatorStyles="w-8 h-8 rounded-none"
                     countStyle="rounded-none w-8 h-8 opacity-80"
-                    quantity={cartItem.quantity}
+                    quantity={el.quantity}
                   ></PlusMinusBtn>
                 </div>
               );

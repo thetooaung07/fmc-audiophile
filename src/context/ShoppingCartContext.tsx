@@ -4,7 +4,7 @@ import { Product } from "../common/models";
 type ShoppingCartContext = {
   removeAllFromCart: () => void;
   getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (product: Product) => void;
+  increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQuantity: number;
@@ -18,10 +18,6 @@ type ShoppingCartProviderProps = {
 export interface CartItem {
   id: number;
   quantity: number;
-  cartImage: string;
-  shortName: string;
-  price: number;
-  slug: string;
 }
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -32,7 +28,6 @@ export function useShoppingCartContext() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
@@ -47,23 +42,19 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find((item) => item.id == id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(product: Product) {
+  function increaseCartQuantity(id: number) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id == product.id) == null) {
+      if (currItems.find((item) => item.id == id) == null) {
         return [
           ...currItems,
           {
-            id: product.id,
+            id: id,
             quantity: 1,
-            cartImage: product.cartImage,
-            shortName: product.shortName,
-            price: product.price,
-            slug: product.slug,
           },
         ];
       } else {
         return currItems.map((item) => {
-          if (item.id == product.id) {
+          if (item.id == id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;

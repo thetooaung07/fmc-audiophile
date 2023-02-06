@@ -19,7 +19,6 @@ function App() {
   const [apiData, setApiData] = useState<Product[]>([]);
   const [selectedCardProduct, setSelectedCartProduct] =
     useState<Product | null>(null);
-  const [cartProduct, setCartProudct] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -40,8 +39,7 @@ function App() {
       value={{
         products: apiData,
         setProducts: setApiData,
-        setCartProudct: setCartProudct,
-        cartProduct: cartProduct,
+
         selectedProduct: selectedCardProduct,
         setSelectedProduct: setSelectedCartProduct,
       }}

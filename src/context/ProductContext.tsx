@@ -6,8 +6,6 @@ export type AppContext = {
   setProducts: (value: any) => void;
   selectedProduct: Product | null;
   setSelectedProduct: (value: Product) => void;
-  cartProduct: Product[];
-  setCartProudct: (value: any) => void;
 };
 
 export const ProductContext = React.createContext<AppContext>({
@@ -15,8 +13,6 @@ export const ProductContext = React.createContext<AppContext>({
   setProducts: () => {},
   selectedProduct: null,
   setSelectedProduct: () => {},
-  cartProduct: [],
-  setCartProudct: () => {},
 });
 
 export const useProductContext = () => useContext(ProductContext);

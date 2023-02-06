@@ -11,7 +11,6 @@ export const DetailsProductCard = ({
   btnOnClick,
   quantity,
 }: IProductDetailsCard) => {
-  const { setCartProudct, cartProduct } = useProductContext();
   const {
     getItemQuantity,
     decreaseCartQuantity,
@@ -62,7 +61,7 @@ export const DetailsProductCard = ({
                 : "Remove From Cart"
             }
             onClick={() => {
-              increaseCartQuantity(product);
+              increaseCartQuantity(product.id);
 
               // setCartProudct([...cartProduct, product]);
               // open cart
