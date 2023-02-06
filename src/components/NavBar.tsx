@@ -220,7 +220,13 @@ export const NavBar = () => {
               <h2 className="text-base font-semibold uppercase opacity-70">
                 Total
               </h2>
-              <p className="text-xl font-bold">$12300</p>
+              <p className="text-xl font-bold">
+                $&nbsp;
+                {cartItems.reduce((total, cartItem) => {
+                  const item = products.find((i) => i.id === cartItem.id);
+                  return total + (item?.price || 0) * cartItem.quantity;
+                }, 0)}
+              </p>
             </div>
             <button className="mt-4 h-full w-full bg-buttonOrange py-3 text-white hover:bg-accentLight">
               Checkout
@@ -254,7 +260,7 @@ export const PlusMinusCartBtn = ({
         {getItemQuantity(productId)}
       </div>
       <div
-        className={`rounded-nonebg-[#F1F1F1] flex h-8 w-8 cursor-pointer select-none items-center justify-center text-xl text-black opacity-80 hover:bg-lightGray`}
+        className={`rounded-none" flex h-8 w-8 cursor-pointer select-none items-center justify-center rounded-lg bg-[#F1F1F1] text-xl text-black opacity-80 hover:bg-lightGray`}
         onClick={() => increaseCartQuantity(productId)}
       >
         +
