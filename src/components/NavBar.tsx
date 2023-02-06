@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
+import { PlusMinusBtnType, PlusMinusCartBtnType } from "../common/models";
 import { useProductContext } from "../context/ProductContext";
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
 import { HomePageBodyCard } from "../pages/HomePage";
@@ -211,11 +212,7 @@ export const NavBar = () => {
                       <p className="font-bold opacity-60">${cartItem.price}</p>
                     </div>
                   </div>
-                  <PlusMinusBtn
-                    operatorStyles="w-8 h-8 rounded-none"
-                    countStyle="rounded-none w-8 h-8 opacity-80"
-                    quantity={el.quantity}
-                  ></PlusMinusBtn>
+                  <PlusMinusCartBtn productId={cartItem.id}></PlusMinusCartBtn>
                 </div>
               );
             })}
@@ -230,6 +227,37 @@ export const NavBar = () => {
             </button>
           </>
         )}
+      </div>
+    </div>
+  );
+};
+
+export const PlusMinusCartBtn = ({
+  operatorStyles = "",
+  countStyle = "",
+  productId,
+}: PlusMinusCartBtnType) => {
+  const { increaseCartQuantity, getItemQuantity, decreaseCartQuantity } =
+    useShoppingCartContext();
+
+  return (
+    <div className="flex">
+      <div
+        className={`rounded-none" flex h-8 w-8 cursor-pointer select-none items-center justify-center rounded-lg bg-[#F1F1F1] text-xl text-black opacity-80 hover:bg-lightGray`}
+        onClick={() => decreaseCartQuantity(productId)}
+      >
+        -
+      </div>
+      <div
+        className={`flex w-12 items-center justify-center rounded-lg bg-[#F1F1F1] font-bold text-black ${countStyle}`}
+      >
+        {getItemQuantity(productId)}
+      </div>
+      <div
+        className={`rounded-nonebg-[#F1F1F1] flex h-8 w-8 cursor-pointer select-none items-center justify-center text-xl text-black opacity-80 hover:bg-lightGray`}
+        onClick={() => increaseCartQuantity(productId)}
+      >
+        +
       </div>
     </div>
   );

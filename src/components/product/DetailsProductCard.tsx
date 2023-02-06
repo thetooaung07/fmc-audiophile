@@ -9,14 +9,17 @@ export const DetailsProductCard = ({
   reverse,
   product,
   btnOnClick,
-  quantity,
 }: IProductDetailsCard) => {
   const {
     getItemQuantity,
     decreaseCartQuantity,
     increaseCartQuantity,
     removeFromCart,
+    cartItems,
   } = useShoppingCartContext();
+
+  const [count, setCount] = useState(1);
+
   return (
     <div
       className={`flex flex-col gap-x-40 md:mx-0 lg:flex-row  ${
@@ -53,15 +56,15 @@ export const DetailsProductCard = ({
         <h1 className="mb-4 text-2xl">${product.price}</h1>
 
         <div className="flex gap-4">
-          <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
+          <PlusMinusBtn
+            productId={product.id}
+            count={count}
+            setCount={setCount}
+          ></PlusMinusBtn>
           <PrimaryButton
-            label={
-              getItemQuantity(product.id) == 0
-                ? "Add To Cart"
-                : "Remove From Cart"
-            }
+            label={"Add To Cart"}
             onClick={() => {
-              increaseCartQuantity(product.id);
+              increaseCartQuantity(product.id, count);
 
               // setCartProudct([...cartProduct, product]);
               // open cart
@@ -72,22 +75,27 @@ export const DetailsProductCard = ({
             }}
           ></PrimaryButton>
         </div>
+
+        {cartItems.find((p) => p.id === product.id) && (
+          <div className="mt-2">
+            <span className="text-buttonOrange">
+              {getItemQuantity(product.id)}x
+            </span>
+            &nbsp; inside the cart
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export const PlusMinusBtn = ({
-  quantity,
   operatorStyles = "",
   countStyle = "",
+  productId,
+  count,
+  setCount,
 }: PlusMinusBtnType) => {
-  const [count, setCount] = useState(quantity);
-
-  useEffect(() => {
-    setCount(quantity);
-  }, [quantity]);
-
   return (
     <div className="flex">
       <div

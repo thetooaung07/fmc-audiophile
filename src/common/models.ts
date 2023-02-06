@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IProductCard {
   reverse: boolean;
   productName: string;
@@ -13,10 +15,19 @@ export type ButtonType = {
   inverse?: boolean;
 };
 export type PlusMinusBtnType = {
-  quantity: number;
   operatorStyles?: string;
   countStyle?: string;
+  productId: number;
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
 };
+
+export type PlusMinusCartBtnType = {
+  operatorStyles?: string;
+  countStyle?: string;
+  productId: number;
+};
+
 export type HomePageBodyCardType = {
   imageUrl: string;
   title: string;

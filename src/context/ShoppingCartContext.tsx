@@ -4,7 +4,7 @@ import { Product } from "../common/models";
 type ShoppingCartContext = {
   removeAllFromCart: () => void;
   getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
+  increaseCartQuantity: (id: number, quantity?: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQuantity: number;
@@ -42,20 +42,20 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find((item) => item.id == id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id: number) {
+  function increaseCartQuantity(id: number, quantity = 1) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id == id) == null) {
         return [
           ...currItems,
           {
             id: id,
-            quantity: 1,
+            quantity: quantity,
           },
         ];
       } else {
         return currItems.map((item) => {
           if (item.id == id) {
-            return { ...item, quantity: item.quantity + 1 };
+            return { ...item, quantity: item.quantity + quantity };
           } else {
             return item;
           }
