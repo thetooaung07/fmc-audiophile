@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
-import { useProductContext } from "../context";
+import { useProductContext } from "../context/ProductContext";
+import { useShoppingCartContext } from "../context/ShoppingCartContext";
 import { HomePageBodyCard } from "../pages/HomePage";
 import { PictureComponent } from "../pages/ProductDetailsPage";
 import { PlusMinusBtn } from "./product/DetailsProductCard";
@@ -15,7 +16,9 @@ export const NavBar = () => {
   const [isActive, setIsActive] = useState(location.pathname);
   const [shopCartExpand, setShopCartExpand] = useState(false);
 
-  const { cartProduct, setCartProudct } = useProductContext();
+  // const { cartProduct, setCartProudct } = useProductContext();
+  const { cartItems, cartQuantity, removeAllFromCart, getItemQuantity } =
+    useShoppingCartContext();
 
   useEffect(() => {
     handleActive(location.pathname);
@@ -141,9 +144,9 @@ export const NavBar = () => {
           >
             <TailwindShoppingCartSVG></TailwindShoppingCartSVG>
 
-            {cartProduct.length > 0 && (
+            {cartItems.length > 0 && (
               <div className="absolute -top-3 -right-3 flex h-6 w-6 items-center justify-center rounded-full bg-buttonOrange text-xs text-white">
-                {cartProduct.length}
+                {cartQuantity}
               </div>
             )}
           </div>
@@ -159,11 +162,11 @@ export const NavBar = () => {
       />
 
       <div
-        className={`absolute left-0 right-0 z-30  mx-6 mt-6 h-max rounded-xl bg-white p-8 text-black sm:left-[45%] md:left-1/2 lg:left-[65%] lg:right-[10%] ${
+        className={`absolute left-0 right-0 z-30 mx-6 mt-6 h-max min-w-[325px] rounded-xl bg-white p-8 text-black sm:left-[45%] md:left-1/2 lg:left-[60%] lg:right-[10%] ${
           shopCartExpand ? "block" : "hidden"
         } `}
       >
-        {cartProduct.length <= 0 ? (
+        {cartItems.length <= 0 ? (
           <div className="flex flex-col items-center justify-center">
             <h1 className="pb-8 text-lg font-bold opacity-70">
               Your Cart is Empty
@@ -173,16 +176,16 @@ export const NavBar = () => {
           </div>
         ) : (
           <>
-            <div className="flex justify-between">
+            <div className="flex justify-between ">
               <h1 className="text-lg font-bold uppercase">Cart</h1>
               <p
                 className="cursor-pointer underline"
-                onClick={() => setCartProudct([])}
+                onClick={removeAllFromCart}
               >
                 Remove All
               </p>
             </div>
-            {cartProduct.map((cartItem) => {
+            {cartItems.map((cartItem) => {
               return (
                 <div
                   className="my-4 flex items-center justify-between"
@@ -206,7 +209,7 @@ export const NavBar = () => {
                   <PlusMinusBtn
                     operatorStyles="w-8 h-8 rounded-none"
                     countStyle="rounded-none w-8 h-8 opacity-80"
-                    quantity={1}
+                    quantity={cartItem.quantity}
                   ></PlusMinusBtn>
                 </div>
               );

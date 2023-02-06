@@ -10,7 +10,7 @@ import {
 import { PrimaryButton } from "../components/Buttons";
 import { LoadingIndicator } from "../components/LoadingIndicator";
 import { DetailsProductCard } from "../components/product/DetailsProductCard";
-import { useProductContext } from "../context";
+import { useProductContext } from "../context/ProductContext";
 import { EQUAL_SPACING } from "../utils";
 import { BottomSection, HomePageBody, MidSection } from "./HomePage";
 

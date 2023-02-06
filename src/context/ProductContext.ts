@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Product } from "./common/models";
+import { Product } from "../common/models";
 
 export type AppContext = {
   products: Product[];

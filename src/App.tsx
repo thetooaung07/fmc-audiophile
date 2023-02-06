@@ -4,7 +4,11 @@ import "./App.css";
 import { Product } from "./common/models";
 import { LoadingIndicator } from "./components/LoadingIndicator";
 import { NavBar } from "./components/NavBar";
-import { ProductContext } from "./context";
+import { ProductContext } from "./context/ProductContext";
+import {
+  ShoppingCartContext,
+  ShoppingCartProvider,
+} from "./context/ShoppingCartContext";
 import { CategoryPage } from "./pages/CategoryPage";
 import { Footer } from "./pages/Footer";
 import { HomePage } from "./pages/HomePage";
@@ -24,7 +28,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setApiData(data.products);
-        // setCartProudct([...data.products]);
       });
 
     setTimeout(() => {
@@ -43,22 +46,24 @@ function App() {
         setSelectedProduct: setSelectedCartProduct,
       }}
     >
-      {isLoading ? (
-        <LoadingIndicator></LoadingIndicator>
-      ) : (
-        <div className="h-max">
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/headphones" element={<CategoryPage />} />
-            <Route path="/speakers" element={<CategoryPage />} />
-            <Route path="/earphones" element={<CategoryPage />} />
-            <Route path="/:category/:name" element={<ProductDetails />} />
-            <Route path="*" element={<UnknownRoute></UnknownRoute>} />
-          </Routes>
-          <Footer></Footer>
-        </div>
-      )}
+      <ShoppingCartProvider>
+        {isLoading ? (
+          <LoadingIndicator></LoadingIndicator>
+        ) : (
+          <div className="h-max">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/headphones" element={<CategoryPage />} />
+              <Route path="/speakers" element={<CategoryPage />} />
+              <Route path="/earphones" element={<CategoryPage />} />
+              <Route path="/:category/:name" element={<ProductDetails />} />
+              <Route path="*" element={<UnknownRoute></UnknownRoute>} />
+            </Routes>
+            <Footer></Footer>
+          </div>
+        )}
+      </ShoppingCartProvider>
     </ProductContext.Provider>
   );
 }

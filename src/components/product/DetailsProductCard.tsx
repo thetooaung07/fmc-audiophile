@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { calcLength } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { IProductDetailsCard, PlusMinusBtnType } from "../../common/models";
-import { useProductContext } from "../../context";
+import { useProductContext } from "../../context/ProductContext";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import { PrimaryButton } from "../Buttons";
 
 export const DetailsProductCard = ({
@@ -10,6 +12,12 @@ export const DetailsProductCard = ({
   quantity,
 }: IProductDetailsCard) => {
   const { setCartProudct, cartProduct } = useProductContext();
+  const {
+    getItemQuantity,
+    decreaseCartQuantity,
+    increaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCartContext();
   return (
     <div
       className={`flex flex-col gap-x-40 md:mx-0 lg:flex-row  ${
@@ -48,14 +56,20 @@ export const DetailsProductCard = ({
         <div className="flex gap-4">
           <PlusMinusBtn quantity={quantity}></PlusMinusBtn>
           <PrimaryButton
-            label="Add Product"
+            label={
+              getItemQuantity(product.id) == 0
+                ? "Add To Cart"
+                : "Remove From Cart"
+            }
             onClick={() => {
-              setCartProudct([...cartProduct, product]);
+              increaseCartQuantity(product);
 
+              // setCartProudct([...cartProduct, product]);
               // open cart
               // Add To Cart  // setCartProudct();
               // Show Product Count in Cart <Change Cart State>
               // Notification
+              // if count becomes zero > ask prompt and then remove from the cart
             }}
           ></PrimaryButton>
         </div>
@@ -65,11 +79,16 @@ export const DetailsProductCard = ({
 };
 
 export const PlusMinusBtn = ({
-  quantity = 1,
+  quantity,
   operatorStyles = "",
   countStyle = "",
 }: PlusMinusBtnType) => {
   const [count, setCount] = useState(quantity);
+
+  useEffect(() => {
+    setCount(quantity);
+  }, [quantity]);
+
   return (
     <div className="flex">
       <div
