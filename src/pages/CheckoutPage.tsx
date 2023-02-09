@@ -12,7 +12,7 @@ export const CheckoutPage = () => {
 
   const navigate = useNavigate();
   return (
-    <section className="h-max bg-gray bg-opacity-30 pb-24">
+    <section className="h-max bg-gray bg-opacity-20 pb-24">
       <div className="md:container-center mx-5">
         <div className="py-10">
           <p
@@ -24,8 +24,8 @@ export const CheckoutPage = () => {
             Go Back
           </p>
         </div>
-        <div className="flex gap-x-10">
-          <div className="w-2/3 rounded-xl bg-white p-8">
+        <div className="flex flex-col gap-x-10 lg:flex-row">
+          <div className="rounded-xl bg-white p-8 shadow-sm lg:w-2/3">
             <h2 className="pb-8 text-2xl font-bold uppercase">Checkout</h2>
             {/* form */}
             <form action="">
@@ -71,12 +71,10 @@ export const CheckoutPage = () => {
                   </div>
                   <div className="col-span-12 md:col-span-6 ">
                     <RadioInput
-                      label="Phone Number"
                       placeholder="+1 0123-456-789"
                       radioLabel="e-Money"
                     />
                     <RadioInput
-                      label="Phone Number"
                       placeholder="+1 0123-456-789"
                       radioLabel="Cash On Delivery"
                     />
@@ -93,7 +91,7 @@ export const CheckoutPage = () => {
             </form>
             {/* End of form */}
           </div>
-          <div className="w-1/3 bg-white p-8">
+          <div className="h-max rounded-xl bg-white p-8 shadow-sm lg:w-1/3">
             {/*  */}
             <h2 className="text-xl font-bold uppercase">Summary</h2>
             <div className="py-4">
@@ -129,7 +127,62 @@ export const CheckoutPage = () => {
               })}
             </div>
 
-            {/*  */}
+            {/* Total Grand Total */}
+            <div className="flex items-center justify-between text-xl">
+              <h2 className="text-base font-semibold uppercase opacity-70">
+                Total
+              </h2>
+              <p className="text-xl font-semibold">
+                $&nbsp;
+                {cartItems.reduce((total, cartItem) => {
+                  const item = products.find((i) => i.id === cartItem.id);
+                  return total + (item?.price || 0) * cartItem.quantity;
+                }, 0)}
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-xl">
+              <h2 className="text-base font-semibold uppercase opacity-70">
+                Shipping
+              </h2>
+              <p className="text-xl font-semibold">
+                $&nbsp;
+                {cartItems.reduce((total, cartItem) => {
+                  const item = products.find((i) => i.id === cartItem.id);
+                  return total + (item?.price || 0) * cartItem.quantity;
+                }, 0)}
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-xl">
+              <h2 className="text-base font-semibold uppercase opacity-70">
+                Vat (Included)
+              </h2>
+              <p className="text-xl font-semibold">
+                $&nbsp;
+                {cartItems.reduce((total, cartItem) => {
+                  const item = products.find((i) => i.id === cartItem.id);
+                  return total + (item?.price || 0) * cartItem.quantity;
+                }, 0)}
+              </p>
+            </div>
+            <div className="my-4 flex items-center justify-between text-xl">
+              <h2 className="text-base font-semibold uppercase opacity-70">
+                Grand Total
+              </h2>
+              <p className="text-xl font-semibold text-buttonOrange">
+                $&nbsp;
+                {cartItems.reduce((total, cartItem) => {
+                  const item = products.find((i) => i.id === cartItem.id);
+                  return total + (item?.price || 0) * cartItem.quantity;
+                }, 0)}
+              </p>
+            </div>
+
+            <button
+              className="mt-4 w-full bg-buttonOrange py-3 uppercase text-white hover:bg-accentLight"
+              onClick={() => {}}
+            >
+              Continue & Pay
+            </button>
           </div>
         </div>
       </div>
@@ -170,27 +223,15 @@ const LabelInput = ({
 };
 
 type RadioInputType = {
-  label: string;
   placeholder: string;
   ///override default width [Tailwind CSS]
   style?: string;
   radioLabel: string;
 };
 
-const RadioInput = ({
-  label,
-  placeholder,
-  style,
-  radioLabel,
-}: RadioInputType) => {
+const RadioInput = ({ placeholder, style, radioLabel }: RadioInputType) => {
   return (
-    <div className={`col-span-12 md:col-span-6  ${style}`}>
-      <label
-        htmlFor="first-name"
-        className="text-gray-700 block text-sm font-medium"
-      >
-        {label}
-      </label>
+    <div className={`col-span-12 mb-3 md:col-span-6 ${style}`}>
       <div className="borders flex items-center rounded-lg border border-lightGray px-4 py-4 text-sm placeholder:font-normal focus:border-buttonOrange focus:outline-none focus:ring-1 focus:ring-buttonOrange">
         <input placeholder={placeholder} type="radio" className="scale-150" />
         <span className="mr-4"></span>
