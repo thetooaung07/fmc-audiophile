@@ -21,7 +21,7 @@
 @tailwind utilities;
 
 html {
-  font-family: "Manrope", sans-serif;
+  font-family: "Inter var", sans-serif;
   /* font-family: "Montserrat", sans-serif; Good for Body paragraph  */
   /* font-family: "Poppins", sans-serif; Good on big texts */
 

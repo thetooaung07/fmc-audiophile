@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { render } from "react-dom";
-import { useNavigate, useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import {
   imageSrcSetType,
   InTheBoxItemType,
@@ -28,11 +28,18 @@ export const ProductDetails = () => {
     fetch("/product.json")
       .then((res) => res.json())
       .then((data) => {
-        setSelectedProduct(
-          data.products.find((oj: { category: any; slug: any }) => {
+        const findResult = data.products.find(
+          (oj: { category: any; slug: any }) => {
             return `${oj.category}/${oj.slug}` == `${category}/${name}`;
-          })
+          }
         );
+        console.log(findResult);
+        if (findResult == undefined) {
+          setIsLoading(false);
+
+          return navigate("/404");
+        } else setSelectedProduct(findResult);
+
         setIsLoading(false);
       });
   }, [category, name]);
@@ -43,13 +50,15 @@ export const ProductDetails = () => {
         <LoadingIndicator />
       ) : (
         <section className="md:container-center mx-5">
-          <div
-            className="my-4 flex max-h-fit max-w-fit cursor-pointer py-2 opacity-60  hover:opacity-100"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <p> Go Back </p>
+          <div className="py-10">
+            <p
+              className="flex max-h-fit max-w-fit cursor-pointer opacity-60 transition-opacity hover:opacity-100"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Go Back
+            </p>
           </div>
           {selectedProduct !== null && (
             <DetailsProductCard
@@ -186,18 +195,14 @@ export const GridGallery = () => {
 
 export const PictureComponent = ({
   pictureClassName,
-  imgClassName,
+  imgClassName = "rounded-2xl",
   imageSrcSet,
 }: IPictureSourceComponent) => {
   return (
     <picture className={pictureClassName}>
       <source srcSet={imageSrcSet.mobile} media="(max-width: 640px)" />
       <source srcSet={imageSrcSet.tablet} media="(max-width: 1024px)" />
-      <img
-        src={imageSrcSet.desktop}
-        alt=""
-        className={`rounded-2xl ${imgClassName}`}
-      />
+      <img src={imageSrcSet.desktop} alt="" className={`${imgClassName}`} />
     </picture>
   );
 };

@@ -10,6 +10,7 @@ import {
   ShoppingCartProvider,
 } from "./context/ShoppingCartContext";
 import { CategoryPage } from "./pages/CategoryPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./pages/Footer";
 import { HomePage } from "./pages/HomePage";
 import { ProductDetails } from "./pages/ProductDetailsPage";
@@ -56,6 +57,8 @@ function App() {
               <Route path="/speakers" element={<CategoryPage />} />
               <Route path="/earphones" element={<CategoryPage />} />
               <Route path="/:category/:name" element={<ProductDetails />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/404" element={<UnknownRoute></UnknownRoute>} />
               <Route path="*" element={<UnknownRoute></UnknownRoute>} />
             </Routes>
             <Footer></Footer>
@@ -68,9 +71,6 @@ function App() {
 
 export default App;
 
-/// sync cart item with local storage
-/// Continue => same product > only increase quantity
 /// fly to cart animation
-/// details Card => already inside the cart ? "Open Cart" : "Add to product"
+
 /// chekout page
-///

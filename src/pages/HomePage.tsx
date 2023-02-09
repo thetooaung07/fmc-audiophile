@@ -252,7 +252,7 @@ export const MidSection = () => {
 export const BottomSection = () => {
   return (
     <div
-      className={`${EQUAL_SPACING} mx-8 lg:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
+      className={`${EQUAL_SPACING} mx-8 mb-24 lg:mx-auto lg:flex lg:flex-row-reverse lg:items-center lg:gap-8`}
     >
       <picture className="lg:flex-1">
         <source media="(max-width: 640px)" srcSet={ImageBestGearmobile} />

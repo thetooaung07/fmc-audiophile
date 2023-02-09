@@ -38,7 +38,7 @@ export const NavBar = () => {
   function toggleShopCart() {
     setShopCartExpand(!shopCartExpand);
   }
-
+  const navigate = useNavigate();
   return (
     <div className="relative bg-black text-white">
       {/* Backdrop for Menu */}
@@ -204,7 +204,7 @@ export const NavBar = () => {
                         tablet: cartItem.cartImage,
                         desktop: cartItem.cartImage,
                       }}
-                      imgClassName="w-16 h-16 rounded-md"
+                      imgClassName="w-16 h-16 rounded-xl"
                       pictureClassName=""
                     ></PictureComponent>
                     <div className="flex flex-col items-start justify-center">
@@ -228,7 +228,13 @@ export const NavBar = () => {
                 }, 0)}
               </p>
             </div>
-            <button className="mt-4 h-full w-full bg-buttonOrange py-3 text-white hover:bg-accentLight">
+            <button
+              className="mt-4 h-full w-full bg-buttonOrange py-3 text-white hover:bg-accentLight"
+              onClick={() => {
+                setShopCartExpand(false);
+                navigate("/checkout");
+              }}
+            >
               Checkout
             </button>
           </>
