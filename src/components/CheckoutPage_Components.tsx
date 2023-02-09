@@ -1,5 +1,7 @@
-import { ReactNode, useState } from "react";
+import { Children, ReactNode, useState } from "react";
 import "../App.css";
+import { PlusMinusCartBtn } from "../components/NavBar";
+import { TailwindShoppingCartSVG } from "../components/TailwindShoppingCartSVG";
 import { useProductContext } from "../context/ProductContext";
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
 import { PictureComponent } from "../pages/ProductDetailsPage";
@@ -197,77 +199,91 @@ export const CheckoutSummary = () => {
   return (
     <div className="h-max rounded-xl bg-white p-8 shadow-sm lg:w-1/3">
       {/*  */}
-      <h2 className="text-xl font-bold uppercase">Summary</h2>
-      <div className="py-4">
-        {cartItems.map((el) => {
-          const cartItem = products.find((p) => p.id == el.id);
-          if (cartItem == null) return;
 
-          return (
-            <div
-              className="my-4 flex items-center justify-between"
-              key={cartItem.id}
-            >
-              <div className="flex gap-x-6">
-                <PictureComponent
-                  imageSrcSet={{
-                    mobile: cartItem.cartImage,
-                    tablet: cartItem.cartImage,
-                    desktop: cartItem.cartImage,
-                  }}
-                  imgClassName="w-16 h-16 rounded-lg"
-                  pictureClassName=""
-                ></PictureComponent>
-                <div className="flex flex-col items-start justify-center rounded">
-                  <h2 className="font-bold">{cartItem.shortName}</h2>
-                  <p className="font-bold opacity-60">${cartItem.price}</p>
+      {cartItems.length <= 0 ? (
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="pb-8 text-lg font-bold opacity-70">
+            Your Cart is Empty
+          </h1>
+
+          <TailwindShoppingCartSVG style="w-24 h-24"></TailwindShoppingCartSVG>
+        </div>
+      ) : (
+        <div>
+          <h2 className="text-xl font-bold uppercase">Summary</h2>
+          <div className="py-4">
+            {cartItems.map((el) => {
+              const cartItem = products.find((p) => p.id == el.id);
+              if (cartItem == null) return;
+              return (
+                <div
+                  className="my-4 flex items-center justify-between"
+                  key={cartItem.id}
+                >
+                  <div className="flex gap-x-6">
+                    <PictureComponent
+                      imageSrcSet={{
+                        mobile: cartItem.cartImage,
+                        tablet: cartItem.cartImage,
+                        desktop: cartItem.cartImage,
+                      }}
+                      imgClassName="w-16 h-16 rounded-lg"
+                      pictureClassName=""
+                    ></PictureComponent>
+                    <div className="flex flex-col items-start justify-center rounded">
+                      <h2 className="font-bold">{cartItem.shortName}</h2>
+                      <p className="font-bold opacity-60">${cartItem.price}</p>
+                    </div>
+                  </div>
+                  <p className="font-bold opacity-60">x{el.quantity}</p>
                 </div>
-              </div>
-              <p className="font-bold opacity-60">x{el.quantity}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Total Grand Total */}
-      <div className="flex items-center justify-between text-lg">
-        <h2 className="text-base font-semibold uppercase opacity-70">Total</h2>
-        <p className="text-lg font-semibold opacity-80">
-          $&nbsp;
-          {cartItems.reduce((total, cartItem) => {
-            const item = products.find((i) => i.id === cartItem.id);
-            return total + (item?.price || 0) * cartItem.quantity;
-          }, 0)}
-        </p>
-      </div>
-      <div className="flex items-center justify-between text-lg">
-        <h2 className="text-base font-semibold uppercase opacity-70">
-          Shipping
-        </h2>
-        <p className="text-lg font-semibold opacity-80">$&nbsp;{shipping}</p>
-      </div>
-      <div className="flex items-center justify-between text-lg">
-        <h2 className="text-base font-semibold uppercase opacity-70">
-          Vat (Included)
-        </h2>
-        <p className="text-lg font-semibold opacity-80">$&nbsp;{vat}</p>
-      </div>
-      <div className="my-4 flex items-center justify-between text-lg">
-        <h2 className="text-base font-semibold uppercase opacity-70">
-          Grand Total
-        </h2>
-        <p className="text-lg font-semibold text-buttonOrange opacity-80">
-          $&nbsp;
-          {totalCartItems + vat + shipping}
-        </p>
-      </div>
-
-      <button
-        className="mt-4 w-full bg-buttonOrange py-3 font-bold uppercase text-white hover:bg-accentLight"
-        onClick={() => {}}
-      >
-        Continue & Pay
-      </button>
+              );
+            })}
+          </div>
+          {/* Total Grand Total */}
+          <div className="flex items-center justify-between text-lg">
+            <h2 className="text-base font-semibold uppercase opacity-70">
+              Total
+            </h2>
+            <p className="text-lg font-semibold opacity-80">
+              $&nbsp;
+              {cartItems.reduce((total, cartItem) => {
+                const item = products.find((i) => i.id === cartItem.id);
+                return total + (item?.price || 0) * cartItem.quantity;
+              }, 0)}
+            </p>
+          </div>
+          <div className="flex items-center justify-between text-lg">
+            <h2 className="text-base font-semibold uppercase opacity-70">
+              Shipping
+            </h2>
+            <p className="text-lg font-semibold opacity-80">
+              $&nbsp;{shipping}
+            </p>
+          </div>
+          <div className="flex items-center justify-between text-lg">
+            <h2 className="text-base font-semibold uppercase opacity-70">
+              Vat (Included)
+            </h2>
+            <p className="text-lg font-semibold opacity-80">$&nbsp;{vat}</p>
+          </div>
+          <div className="my-4 flex items-center justify-between text-lg">
+            <h2 className="text-base font-semibold uppercase opacity-70">
+              Grand Total
+            </h2>
+            <p className="text-lg font-semibold text-buttonOrange opacity-80">
+              $&nbsp;
+              {totalCartItems + vat + shipping}
+            </p>
+          </div>
+          <button
+            className="mt-4 w-full bg-buttonOrange py-3 font-bold uppercase text-white hover:bg-accentLight"
+            onClick={() => {}}
+          >
+            Continue & Pay
+          </button>
+        </div>
+      )}
     </div>
   );
 };
