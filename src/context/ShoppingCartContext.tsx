@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { Product } from "../common/models";
+import { createContext, ReactNode, useContext } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type ShoppingCartContext = {

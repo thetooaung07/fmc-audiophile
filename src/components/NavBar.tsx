@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, Routes, useLocation, useNavigate } from "react-router-dom";
-import { PlusMinusBtnType, PlusMinusCartBtnType } from "../common/models";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { PlusMinusCartBtnType } from "../common/models";
 import { useProductContext } from "../context/ProductContext";
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
 import { HomePageBodyCard } from "../pages/HomePage";
 import { PictureComponent } from "../pages/ProductDetailsPage";
-import { PlusMinusBtn } from "./product/DetailsProductCard";
 import { TailwindShoppingCartSVG } from "./TailwindShoppingCartSVG";
 import Earphones from "/images/shared/desktop/image-earphones.png";
 import Headphones from "/images/shared/desktop/image-headphones.png";

@@ -1,4 +1,3 @@
-import React from "react";
 import { ButtonType } from "../common/models";
 
 export const PrimaryButton = ({
@@ -8,7 +7,7 @@ export const PrimaryButton = ({
 }: ButtonType) => {
   return (
     <button
-      className={`px-8 py-3 border-none text-white bg-buttonOrange  hover:bg-accentLight hover:transition font-medium ${buttonStyle} uppercase`}
+      className={`border-none bg-buttonOrange px-8 py-3 font-medium  text-white hover:bg-accentLight hover:transition ${buttonStyle} uppercase`}
       onClick={onClick}
     >
       {label}
@@ -24,7 +23,7 @@ export const SecondaryButton = ({
 }: ButtonType) => {
   return (
     <button
-      className={`px-8 py-3 font-medium w-max ${
+      className={`w-max px-8 py-3 font-medium ${
         inverse ? "secondary-btn-inverse" : "secondary-btn"
       } ${buttonStyle} uppercase`}
       onClick={onClick}

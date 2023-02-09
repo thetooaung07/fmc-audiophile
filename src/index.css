@@ -18,6 +18,10 @@ html {
   /* scroll-behavior: smooth; */
 }
 
+input[type="radio"]:checked {
+  background-color: rgba(216, 125, 74, 1);
+}
+
 @layer components {
   .container-center {
     @apply container mx-auto md:w-2/3;
@@ -31,5 +35,8 @@ html {
   }
   .secondary-btn-inverse {
     @apply border border-black bg-black text-white  hover:bg-transparent  hover:text-black hover:transition;
+  }
+  .input-radio-checked {
+    @apply checked:bg-buttonOrange checked:hover:bg-buttonOrange focus:bg-buttonOrange focus:outline-none focus:ring-1 focus:ring-buttonOrange checked:focus:bg-buttonOrange checked:active:bg-buttonOrange;
   }
 }

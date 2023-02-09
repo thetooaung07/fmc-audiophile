@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import HeroImageDesktop from "/images/home/desktop/image-hero.jpg";
 import HeroImageMobile from "/images/home/mobile/image-hero.jpg";
@@ -21,7 +21,6 @@ import SpeakerZx7tablet from "/images/home/tablet/image-speaker-zx7.jpg";
 
 import { HomePageBodyCardType } from "../common/models";
 import { PrimaryButton, SecondaryButton } from "../components/Buttons";
-import { useProductContext } from "../context/ProductContext";
 import { EQUAL_SPACING } from "../utils";
 import SpeakerZx9desktop from "/images/home/desktop/image-speaker-zx9.png";
 import SpeakerZx9mobile from "/images/home/mobile/image-speaker-zx9.png";

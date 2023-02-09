@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
-import { render } from "react-dom";
-import { redirect, useNavigate, useParams } from "react-router-dom";
-import {
-  imageSrcSetType,
-  InTheBoxItemType,
-  IPictureSourceComponent,
-  Product,
-} from "../common/models";
+import { useNavigate, useParams } from "react-router-dom";
+import { InTheBoxItemType, IPictureSourceComponent } from "../common/models";
 import { PrimaryButton } from "../components/Buttons";
 import { LoadingIndicator } from "../components/LoadingIndicator";
 import { DetailsProductCard } from "../components/product/DetailsProductCard";
 import { useProductContext } from "../context/ProductContext";
 import { EQUAL_SPACING } from "../utils";
-import { BottomSection, HomePageBody, MidSection } from "./HomePage";
+import { BottomSection } from "./HomePage";
 
 export const ProductDetails = () => {
   const { category, name } = useParams();

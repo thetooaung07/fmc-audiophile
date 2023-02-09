@@ -1,5 +1,4 @@
 import { IProductCard } from "../../common/models";
-
 import { EQUAL_SPACING } from "../../utils";
 import { PrimaryButton } from "../Buttons";
 

@@ -1,7 +1,5 @@
-import { calcLength } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { IProductDetailsCard, PlusMinusBtnType } from "../../common/models";
-import { useProductContext } from "../../context/ProductContext";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import { PrimaryButton } from "../Buttons";
 

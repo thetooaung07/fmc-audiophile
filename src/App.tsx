@@ -5,10 +5,7 @@ import { Product } from "./common/models";
 import { LoadingIndicator } from "./components/LoadingIndicator";
 import { NavBar } from "./components/NavBar";
 import { ProductContext } from "./context/ProductContext";
-import {
-  ShoppingCartContext,
-  ShoppingCartProvider,
-} from "./context/ShoppingCartContext";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { CategoryPage } from "./pages/CategoryPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { Footer } from "./pages/Footer";

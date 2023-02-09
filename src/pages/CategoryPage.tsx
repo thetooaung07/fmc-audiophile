@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Product } from "../common/models";
 import { LoadingIndicator } from "../components/LoadingIndicator";
 import { HomePageProductCard } from "../components/product/HomeProductCard";
@@ -34,7 +34,7 @@ export const CategoryPage = () => {
       ) : (
         <section>
           <div className="bg-black">
-            <h1 className="text-center text-3xl py-10 lg:text-6xl text-white lg:py-20 capitalize">
+            <h1 className="py-10 text-center text-3xl capitalize text-white lg:py-20 lg:text-6xl">
               {location.pathname.substring(1)}
             </h1>
           </div>

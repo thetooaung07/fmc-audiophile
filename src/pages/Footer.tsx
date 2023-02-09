@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import FacebookIcon from "/images/shared/facebook.svg";
 import InstagramIcon from "/images/shared/instagram.svg";
 import TwitterIcon from "/images/shared/twitter.svg";

@@ -1,8 +1,6 @@
-import React from "react";
-
 export const LoadingIndicator = () => {
   return (
-    <div className="h-screen w-screen bg-black flex text-center justify-center items-center min-h-screen">
+    <div className="flex h-screen min-h-screen w-screen items-center justify-center bg-black text-center">
       <div className="animate-ring"></div>
       <span className="loading-text">loading...</span>
     </div>
